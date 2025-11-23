@@ -44,7 +44,7 @@
 
         .schedule-table { 
             width: 100%; 
-            min-width: 850px; /* 표의 최소 너비를 충분히 확보 */
+            min-width: 950px; /* 표의 최소 너비를 충분히 확보 (가격 열 추가로 넓어짐) */
             border-collapse: collapse; 
         }
         .schedule-table th, .schedule-table td { 
@@ -93,29 +93,30 @@
                     <tr>
                         <th style="width: 10%;">시간</th>
                         <th style="width: 20%;">경로</th>
-                        <th style="width: 35%;">일정/목적지</th>
+                        <th style="width: 25%;">일정/목적지</th>
+                        <th style="width: 10%;">가격</th>
                         <th style="width: 35%;">비고</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>06:00</td><td>집 - 물금역</td><td>택시 탑승</td><td>₩10,000 / 15분 소요</td></tr>
-                    <tr><td>06:15</td><td>물금역 도착</td><td>대기</td><td></td></tr>
-                    <tr><td>06:30</td><td>물금역 - 대전역</td><td>기차 탑승</td><td>₩28,100 / 1시간 44분 소요</td></tr>
-                    <tr><td>08:19</td><td>대전역 도착</td><td>지하철 이동 준비</td><td>4번 출구</td></tr>
-                    <tr><td>08:26</td><td>대전역 - 중앙로역</td><td>지하철 탑승</td><td>₩1,550 / 빠른하차 4-2</td></tr>
-                    <tr><td>08:31</td><td>중앙로역 - 성심당 본점</td><td>도보 3분</td><td>성심당 본점 또는 샌드위치 정거장 방문</td></tr>
-                    <tr><td>09:15</td><td>성심당 - 선화동</td><td>도보 14분</td><td>개인 가방, 지하철 트래블 라운지 보관</td></tr>
-                    <tr><td>09:30</td><td>선화동</td><td>식사</td><td>선화동 소머리 해장국 ₩10,000</td></tr>
-                    <tr><td>10:00</td><td>선화동 - 국립 농산 물품 관리원</td><td>버스 45분 소요</td><td>₩1,500 / 108번 탑승</td></tr>
-                    <tr><td>10:51</td><td>사학 연금회관 - 한밭수목원</td><td>도보 23분 후 도착</td><td></td></tr>
-                    <tr><td>12:00</td><td>한밭수목원 - 대전 신세계</td><td>버스 이동</td><td>₩1,500 / 911번 탑승</td></tr>
-                    <tr><td>12:19</td><td>대전 신세계 도착</td><td>스타벅스 대전엑스포스카이점</td><td>최소 1시 50분까지는 버스 탑승</td></tr>
-                    <tr><td>13:50</td><td>스타벅스 - 대전역</td><td>버스 이동</td><td>₩1,500 / 606번, 707번 탑승 (44분~1시간 소요)</td></tr>
-                    <tr><td>14:54</td><td>대전역 도착</td><td>울산행 기차 대기</td><td></td></tr>
-                    <tr><td>15:34</td><td>대전역 - 울산(통도사)</td><td>기차 탑승</td><td>₩30,100 / 1시간 15분 소요</td></tr>
-                    <tr><td>16:49</td><td>울산역 도착</td><td>버스 이동 준비</td><td>3번 출구 오른쪽 방향 / 버스 1시간 소요</td></tr>
-                    <tr><td>16:50</td><td>울산역 - 신도시 현대 청어람</td><td>버스 탑승</td><td>₩3,500 / 3000번 버스 탑승</td></tr>
-                    <tr><td>18:15</td><td>신도시 현대 청어람 하차</td><td>귀가 (끝)</td><td></td></tr>
+                    <tr><td>06:00</td><td>집 - 물금역</td><td>택시 탑승</td><td>₩10,000</td><td><i class="fas fa-taxi"></i> 15분 소요</td></tr>
+                    <tr><td>06:15</td><td>물금역 도착</td><td>대기</td><td></td><td></td></tr>
+                    <tr><td>06:30</td><td>물금역 - 대전역</td><td>기차 탑승</td><td>₩28,100</td><td><i class="fas fa-train"></i> 1시간 44분 소요</td></tr>
+                    <tr><td>08:19</td><td>대전역 도착</td><td>지하철 이동 준비</td><td></td><td>4번 출구</td></tr>
+                    <tr><td>08:26</td><td>대전역 - 중앙로역</td><td>지하철 탑승</td><td>₩1,550</td><td><i class="fas fa-subway"></i> 빠른하차 4-2</td></tr>
+                    <tr><td>08:31</td><td>중앙로역 - 성심당 본점</td><td>성심당 본점 또는 샌드위치 정거장 방문</td><td></td><td><i class="fas fa-walking"></i> 도보 3분</td></tr>
+                    <tr><td>09:15</td><td>성심당 - 선화동</td><td>이동</td><td></td><td><i class="fas fa-walking"></i> 도보 14분<br>개인 가방, 트래블 라운지 보관</td></tr>
+                    <tr><td>09:30</td><td>선화동</td><td>선화동 소머리 해장국</td><td>₩10,000</td><td>식사</td></tr>
+                    <tr><td>10:00</td><td>선화동 - 국립 농산 물품 관리원</td><td>버스 이동</td><td>₩1,500</td><td><i class="fas fa-bus"></i> 45분 소요 (108번 탑승)</td></tr>
+                    <tr><td>10:51</td><td>사학 연금회관 - 한밭수목원</td><td>한밭수목원 도착</td><td></td><td><i class="fas fa-walking"></i> 도보 23분 소요</td></tr>
+                    <tr><td>12:00</td><td>한밭수목원 - 대전 신세계</td><td>버스 이동</td><td>₩1,500</td><td><i class="fas fa-bus"></i> 16분 소요 (911번 탑승)</td></tr>
+                    <tr><td>12:19</td><td>대전 신세계 도착</td><td>스타벅스 대전엑스포스카이점</td><td></td><td><i class="fas fa-clock"></i> 최소 1시 50분까지 버스 탑승</td></tr>
+                    <tr><td>13:50</td><td>스타벅스 - 대전역</td><td>버스 이동</td><td>₩1,500</td><td><i class="fas fa-bus"></i> 44분~1시간 소요 (606번, 707번 탑승)</td></tr>
+                    <tr><td>14:54</td><td>대전역 도착</td><td>울산행 기차 대기</td><td></td><td></td></tr>
+                    <tr><td>15:34</td><td>대전역 - 울산(통도사)</td><td>기차 탑승</td><td>₩30,100</td><td><i class="fas fa-train"></i> 1시간 15분 소요</td></tr>
+                    <tr><td>16:49</td><td>울산역 도착</td><td>버스 이동 준비</td><td></td><td>3번 출구 오른쪽 방향<br><i class="fas fa-bus"></i> 1시간 소요</td></tr>
+                    <tr><td>16:50</td><td>울산역 - 신도시 현대 청어람</td><td>버스 탑승</td><td>₩3,500</td><td>3000번 버스 탑승</td></tr>
+                    <tr><td>18:15</td><td>신도시 현대 청어람 하차</td><td>귀가 (끝)</td><td></td><td></td></tr>
                 </tbody>
             </table>
         </div>
