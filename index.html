@@ -24,18 +24,37 @@
         .header {
             background-color: #4A7C59;
             color: white;
-            padding: 60px 20px;
+            padding: 60px 20px 20px; /* 패딩 조정 */
             border-radius: 10px;
             margin-bottom: 40px;
             box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
         h1 {
             font-size: 2.5em;
-            margin: 0;
+            margin: 0 0 20px 0; /* 제목 아래 여백 추가 */
         }
+        /* 메인 페이지 전용 메인 버튼 스타일 */
+        .home-link {
+            display: inline-block;
+            text-decoration: none;
+            color: #333;
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin-bottom: 20px; /* 아래 아이콘과의 간격 */
+        }
+        .home-link:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* 아이콘 3개 레이아웃 (모바일 대응) */
         .nav-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            /* 좁은 화면에서 한 줄에 3개 아이콘이 모두 들어가도록 최소 너비 조정 */
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
             gap: 20px;
         }
         .nav-item {
@@ -43,7 +62,7 @@
             text-decoration: none;
             color: #333;
             background-color: white;
-            padding: 30px 20px;
+            padding: 30px 10px; /* 패딩 줄임 */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
@@ -60,8 +79,7 @@
         }
         .nav-item strong {
             display: block;
-            font-size: 1.1em;
-            margin-bottom: 5px;
+            font-size: 1.0em; /* 글자 크기 살짝 줄임 */
         }
     </style>
 </head>
@@ -69,8 +87,11 @@
     <div class="container">
         <div class="header">
             <h1>2025 대전 여행 계획</h1>
+            <a href="index.html" class="home-link">
+                <i class="fas fa-home" style="color: #4A7C59;"></i> 메인
+            </a>
         </div>
-
+        
         <div class="nav-grid">
             <a href="schedule.html" class="nav-item">
                 <i class="fas fa-calendar-alt"></i>
