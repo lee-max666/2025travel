@@ -59,10 +59,10 @@
             padding-bottom: 10px; 
             margin-bottom: 30px; 
         }
-
-        /* 💡 추가: 표를 감싸서 가로 스크롤이 생기도록 함 */
+        
+        /* 가로 스크롤 방지 */
         .table-wrapper {
-            overflow-x: auto;
+            /* overflow-x: auto; 제거 */
             margin-bottom: 30px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             background-color: #fff;
@@ -70,14 +70,13 @@
 
         .schedule-table { 
             width: 100%; 
-            min-width: 650px; /* 모바일에서 표가 너무 찌그러지는 것 방지 */
             border-collapse: collapse; 
-            margin-bottom: 30px; 
         }
         .schedule-table th, .schedule-table td { 
             padding: 12px; 
             border: 1px solid #ddd; 
             text-align: center; 
+            word-break: break-word; /* 모바일에서 자동 줄 바꿈 허용 */
         }
         .schedule-table th { 
             background-color: #4A7C59; 
@@ -88,16 +87,15 @@
             background-color: #f8f8f8; 
         }
 
-        /* 💡 수정: '경로' 셀에 줄 바꿈 금지 적용 */
-        .schedule-table td.route {
-            white-space: nowrap;
+        /* 모바일에서 칸 너비가 너무 좁아지지 않도록 최소 너비 비율 조정 */
+        @media screen and (max-width: 600px) {
+            .schedule-table th:nth-child(1), .schedule-table td:nth-child(1) { width: 15%; } /* 시간 */
+            .schedule-table th:nth-child(2), .schedule-table td:nth-child(2) { width: 25%; } /* 경로 */
+            .schedule-table th:nth-child(3), .schedule-table td:nth-child(3) { width: 40%; } /* 일정/목적지 */
+            .schedule-table th:nth-child(4), .schedule-table td:nth-child(4) { width: 20%; } /* 비고 */
         }
-
-        .day-header {
-            background-color: #6DB95A !important;
-            color: white !important;
-            font-size: 1.2em;
-        }
+        
+        strong { font-weight: bold; }
         
         /* 하단 링크 스타일 */
         .back-link { 
@@ -144,28 +142,6 @@
                     <tr><td>17:00</td><td class="route">대전신세계 - 숙소</td><td>체크인 및 휴식</td><td></td></tr>
                     <tr><td>19:00</td><td class="route">숙소 - 저녁식사</td><td>저녁식사</td><td>광천식당</td></tr>
                     <tr><td>20:00</td><td class="route">저녁식사 - 숙소</td><td>귀가 및 취침</td><td></td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <h3><i class="fas fa-moon"></i> 2일차</h3>
-        <div class="table-wrapper">
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th style="width: 10%;">시간</th>
-                        <th style="width: 25%;">경로</th>
-                        <th style="width: 45%;">일정/목적지</th>
-                        <th style="width: 20%;">비고</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>09:00</td><td class="route">숙소 - 아침식사</td><td>아침식사</td><td></td></tr>
-                    <tr><td>10:00</td><td class="route">아침식사 - 관광지</td><td>관광</td><td>대전근현대사전시관</td></tr>
-                    <tr><td>12:00</td><td class="route">관광지 - 점심식사</td><td>점심식사</td><td>대전 신세계 내부 식당</td></tr>
-                    <tr><td>14:00</td><td class="route">점심식사 - 엑스포</td><td>체험/관람</td><td>엑스포 과학공원</td></tr>
-                    <tr><td>17:00</td><td class="route">엑스포 - 대전역</td><td>이동</td><td></td></tr>
-                    <tr><td>19:00</td><td class="route">대전역 - 집</td><td>복귀</td><td>KTX(SRT) 탑승</td></tr>
                 </tbody>
             </table>
         </div>
