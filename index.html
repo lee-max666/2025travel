@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>여행 계획 메인</title>
+    <title>여행 메인 페이지</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
@@ -32,23 +32,24 @@
         .navbar a.active { background-color: #6DB95A; font-weight: bold; }
         .navbar i { margin-right: 5px; }
 
-        /* ✨ 모바일 네비게이션 배치 (모든 페이지에 적용될 1개/3개 분할) */
+        /* ---------------------------------------------------------------------------------- */
+        /* ✨ 모바일 네비게이션 배치 (메인 1행, 나머지 3개 2행) - 모든 파일에 동일 적용 */
         @media (max-width: 768px) {
             .navbar {
                 display: flex;
                 flex-wrap: wrap; 
                 padding: 5px 0;
             }
-            /* 첫 번째 항목 (메인)은 100% 너비를 차지하여 단독으로 한 줄에 배치 */
+            /* 메인 항목 (첫 번째 항목) - 1행 전체를 차지하도록 강제 설정 */
             .navbar a:first-child { 
-                flex: 0 0 100%;
-                max-width: fit-content; /* 너비를 내용에 맞게 축소 */
-                margin: 0 auto 5px auto; /* 중앙 정렬 및 아래쪽 여백 */
+                width: 100%; /* 너비를 100%로 설정하여 확실히 줄바꿈 */
+                flex: 0 0 auto; /* 유연성 제거 */
+                margin: 0 auto 5px auto; 
                 padding: 10px 20px;
                 box-sizing: border-box;
             }
-            /* 나머지 3개 항목은 다음 줄에서 1/3씩 균등하게 배치 */
-            .navbar a:nth-child(n+2) { /* 2번째 항목부터 */
+            /* 일정, 후보, 지도 및 경로 항목 (나머지 3개) - 2행에 3등분하여 배치 */
+            .navbar a:nth-child(n+2) { 
                 flex: 1 1 calc(33.33% - 10px); 
                 max-width: calc(33.33% - 10px);
                 margin: 5px; 
@@ -57,51 +58,17 @@
                 box-sizing: border-box;
             }
         }
-
-
-        .container { width: 90%; max-width: 800px; margin: 0 auto; padding: 20px 0; text-align: center; }
-        h1 { color: #4A7C59; margin-bottom: 20px; font-size: 2.2em; }
-        p { color: #666; margin-bottom: 30px; font-size: 1.1em; }
+        /* ---------------------------------------------------------------------------------- */
         
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .card {
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 200px;
-            padding: 30px 15px;
-            text-align: center;
-            text-decoration: none;
-            color: #333;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        .card i {
-            font-size: 3em;
-            color: #6DB95A;
-            margin-bottom: 10px;
-        }
-
-        .card-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #4A7C59;
-        }
+        .container { width: 95%; max-width: 800px; margin: 0 auto; padding: 20px 0; }
+        h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
+        /* 여기에 index.html 고유의 스타일이 들어갈 것이오. */
+        .main-content { text-align: center; padding: 50px 0; }
+        .main-content h1 { color: #4A7C59; font-size: 2.5em; margin-bottom: 20px; }
+        .main-content p { color: #666; font-size: 1.2em; }
     </style>
 </head>
-<body class="main-page"> 
+<body>
     <div class="navbar">
         <a href="index.html" class="active"><i class="fas fa-home"></i> 메인</a> 
         <a href="schedule.html"><i class="fas fa-calendar-alt"></i> 일정</a> 
@@ -110,22 +77,10 @@
     </div>
 
     <div class="container">
-        <h1><i class="fas fa-train-subway"></i> 2025 대전 여행 계획</h1>
-        <p>여행 일정, 식사 및 관광지 후보, 지도 정보를 한 눈에 확인하세요.</p>
-        
-        <div class="card-container">
-            <a href="schedule.html" class="card">
-                <i class="fas fa-calendar-alt"></i>
-                <div class="card-title">일정</div>
-            </a>
-            <a href="options.html" class="card">
-                <i class="fas fa-utensils"></i>
-                <div class="card-title">후보</div>
-            </a>
-            <a href="maps.html" class="card">
-                <i class="fas fa-map-marked-alt"></i>
-                <div class="card-title">지도 및 경로</div>
-            </a>
+        <h2><i class="fas fa-plane-departure"></i> 2025 대전 여행 계획</h2>
+        <div class="main-content">
+            <h1>여행을 떠날 준비를 시작하오!</h1>
+            <p>상단 메뉴를 사용하여 일정, 후보 장소, 지도를 확인하시오.</p>
         </div>
     </div>
 </body>
