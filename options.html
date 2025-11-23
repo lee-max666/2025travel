@@ -45,7 +45,20 @@
         
         h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
         h3 { color: #6DB95A; border-left: 5px solid #6DB95A; padding-left: 10px; margin-top: 40px; margin-bottom: 15px; }
-        .option-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #fff; }
+        
+        /* 💡 추가: 표를 감싸서 가로 스크롤이 생기도록 함 */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+
+        .option-table { 
+            width: 100%; 
+            min-width: 600px; /* 모바일에서 표가 너무 찌그러지는 것 방지 (가로 스크롤 유도) */
+            border-collapse: collapse; 
+        }
         .option-table th, .option-table td { padding: 12px; border: 1px solid #ddd; text-align: left; }
         .option-table th { background-color: #4A7C59; color: white; font-weight: bold; text-align: center; }
         .option-table tr:nth-child(even) { background-color: #f8f8f8; }
@@ -55,51 +68,7 @@
         .back-link { display: block; text-align: center; margin-top: 30px; font-size: 1.1em; color: #6DB95A; text-decoration: none; }
         .back-link:hover { text-decoration: underline; }
 
-        /* 모바일 반응형 CSS: 화면이 좁아지면 표를 블록 요소로 변경 */
-        @media screen and (max-width: 600px) {
-            .option-table, .option-table tbody, .option-table tr, .option-table td {
-                display: block;
-                width: 100%;
-            }
-            .option-table thead {
-                display: none; /* 헤더 숨기기 */
-            }
-            .option-table tr {
-                margin-bottom: 15px;
-                border: 1px solid #ddd;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            }
-            .option-table td {
-                text-align: right;
-                padding-left: 50%;
-                position: relative;
-                border: none;
-            }
-            /* 셀 내용 앞에 헤더 역할의 라벨 추가 */
-            .option-table td::before {
-                content: attr(data-label);
-                position: absolute;
-                left: 12px;
-                width: 50%;
-                padding-right: 10px;
-                white-space: nowrap;
-                text-align: left;
-                font-weight: bold;
-                color: #4A7C59;
-            }
-            /* 첫 번째 td (분류/상호명)는 타이틀로 강조 */
-            .option-table tr td:first-child {
-                background-color: #e0f0e0;
-                font-size: 1.1em;
-                font-weight: bold;
-                text-align: left;
-                padding-left: 12px;
-                color: #333;
-            }
-            .option-table tr td:first-child::before {
-                content: ''; /* 타이틀 줄에서는 라벨 제거 */
-            }
-        }
+        /* ⚠️ 이전의 모바일 반응형 CSS (표 세로 변환)는 모두 제거됨 */
     </style>
 </head>
 <body>
@@ -114,55 +83,61 @@
         <h2><i class="fas fa-utensils"></i> 식사, 카페 및 관광지 후보 목록</h2>
 
         <h3><i class="fas fa-utensils"></i> 식사 옵션</h3>
-        <table class="option-table">
-            <thead>
-                <tr>
-                    <th style="width: 15%;">분류</th>
-                    <th style="width: 35%;">상호명</th>
-                    <th style="width: 30%;">비고</th>
-                    <th style="width: 20%;">오픈 시간</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td data-label="분류">국밥</td><td data-label="상호명"><strong>선화동 소머리 해장국</strong></td><td data-label="비고">정기휴무 월요일</td><td data-label="오픈 시간">오전 7:00</td></tr>
-                <tr><td data-label="분류">두부</td><td data-label="상호명">광천식당</td><td data-label="비고"></td><td data-label="오픈 시간">오전 10:30</td></tr>
-                <tr><td data-label="분류">자유식</td><td data-label="상호명">대전 신세계 내부 식당</td><td data-label="비고"></td><td data-label="오픈 시간">오전 11:00</td></tr>
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="option-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">분류</th>
+                        <th style="width: 35%;">상호명</th>
+                        <th style="width: 30%;">비고</th>
+                        <th style="width: 20%;">오픈 시간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>국밥</td><td><strong>선화동 소머리 해장국</strong></td><td>정기휴무 월요일</td><td>오전 7:00</td></tr>
+                    <tr><td>두부</td><td>광천식당</td><td></td><td>오전 10:30</td></tr>
+                    <tr><td>자유식</td><td>대전 신세계 내부 식당</td><td></td><td>오전 11:00</td></tr>
+                </tbody>
+            </table>
+        </div>
 
         <h3><i class="fas fa-coffee"></i> 카페/디저트 옵션</h3>
-        <table class="option-table">
-            <thead>
-                <tr>
-                    <th style="width: 40%;">상호명</th>
-                    <th style="width: 30%;">비고</th>
-                    <th style="width: 30%;">오픈 시간</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td data-label="상호명"><strong>스타벅스 대전엑스포스카이점</strong></td><td data-label="비고">38층</td><td data-label="오픈 시간">오전 8:00</td></tr>
-                <tr><td data-label="상호명">성심당 문화원</td><td data-label="비고"></td><td data-label="오픈 시간">오전 8:00</td></tr>
-                <tr><td data-label="상호명">젤리포에</td><td data-label="비고"></td><td data-label="오픈 시간">오전 11:00</td></tr>
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="option-table">
+                <thead>
+                    <tr>
+                        <th style="width: 40%;">상호명</th>
+                        <th style="width: 30%;">비고</th>
+                        <th style="width: 30%;">오픈 시간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>스타벅스 대전엑스포스카이점</strong></td><td>38층</td><td>오전 8:00</td></tr>
+                    <tr><td>성심당 문화원</td><td></td><td>오전 8:00</td></tr>
+                    <tr><td>젤리포에</td><td></td><td>오전 11:00</td></tr>
+                </tbody>
+            </table>
+        </div>
 
         <h3><i class="fas fa-leaf"></i> 관광지 및 액티비티 옵션</h3>
-        <table class="option-table">
-            <thead>
-                <tr>
-                    <th style="width: 20%;">분류</th>
-                    <th style="width: 40%;">상호명</th>
-                    <th style="width: 25%;">비고</th>
-                    <th style="width: 15%;">오픈 시간</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td data-label="분류">수목원</td><td data-label="상호명"><strong>한밭 수목원</strong></td><td data-label="비고">화요일 서원 휴무</td><td data-label="오픈 시간">오전 5:00</td></tr>
-                <tr><td data-label="분류">전시관</td><td data-label="상호명">대전근현대사전시관</td><td data-label="비고">정기휴무 월요일</td><td data-label="오픈 시간">오전 10:00</td></tr>
-                <tr><td data-label="분류">엑스포</td><td data-label="상호명">엑스포 과학공원</td><td data-label="비고"></td><td data-label="오픈 시간">운영시간 변동</td></tr>
-                <tr><td data-label="분류">소품샵</td><td data-label="상호명">마중</td><td data-label="비고"></td><td data-label="오픈 시간">오전 11:30</td></tr>
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="option-table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">분류</th>
+                        <th style="width: 40%;">상호명</th>
+                        <th style="width: 25%;">비고</th>
+                        <th style="width: 15%;">오픈 시간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>수목원</td><td><strong>한밭 수목원</strong></td><td>화요일 서원 휴무</td><td>오전 5:00</td></tr>
+                    <tr><td>전시관</td><td>대전근현대사전시관</td><td>정기휴무 월요일</td><td>오전 10:00</td></tr>
+                    <tr><td>엑스포</td><td>엑스포 과학공원</td><td></td><td>운영시간 변동</td></tr>
+                    <tr><td>소품샵</td><td>마중</td><td></td><td>오전 11:30</td></tr>
+                </tbody>
+            </table>
+        </div>
 
         <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> 메인 페이지로 돌아가기</a>
     </div>
