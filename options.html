@@ -10,9 +10,9 @@
         .container { width: 90%; max-width: 1000px; margin: 0 auto; padding: 20px 0; }
         /* ... (Navbar, Container, H2/H3 스타일은 생략) ... */
         
-        /* 💡 수정: 가로 스크롤 허용 Wrapper를 컨테이너 안에 넣습니다. */
+        /* 💡 PC와 모바일 동일 레이아웃을 위한 Wrapper (가로 스크롤 허용) */
         .table-wrapper {
-            overflow-x: auto; /* 가로 스크롤 허용 */
+            overflow-x: auto; 
             margin-bottom: 30px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             background-color: #fff;
@@ -20,30 +20,23 @@
 
         .option-table { 
             width: 100%; 
-            min-width: 600px; /* PC처럼 보이도록 최소 너비 지정 */
+            min-width: 600px; /* 표의 최소 너비를 설정하여 PC 레이아웃 유지 */
             border-collapse: collapse; 
         }
         .option-table th, .option-table td { 
             padding: 12px; 
             border: 1px solid #ddd; 
             text-align: left; 
-            white-space: nowrap; /* 줄 바꿈 금지 (PC 동일) */
+            /* ⚠️ 텍스트가 셀 안에서 자연스럽게 줄바꿈되도록 허용 */
+            white-space: normal; 
+            word-break: break-word;
         }
         .option-table th { background-color: #4A7C59; color: white; font-weight: bold; text-align: center; }
         .option-table tr:nth-child(even) { background-color: #f8f8f8; }
         strong { color: #333; font-weight: bold; }
         
-        /* ⚠️ 모든 모바일 반응형 CSS(@media screen and ...) 제거 */
-        
         /* 하단 링크 스타일 */
-        .back-link { 
-            display: block; 
-            text-align: center; 
-            margin-top: 30px; 
-            font-size: 1.1em; 
-            color: #6DB95A; 
-            text-decoration: none; 
-        }
+        .back-link { display: block; text-align: center; margin-top: 30px; font-size: 1.1em; color: #6DB95A; text-decoration: none; }
         .back-link:hover { text-decoration: underline; }
     </style>
 </head>
