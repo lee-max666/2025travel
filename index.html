@@ -33,7 +33,7 @@
         .navbar i { margin-right: 5px; }
 
         /* ---------------------------------------------------------------------------------- */
-        /* ✨ 모바일 네비게이션 배치 (4개 항목 모두 1행씩 분리) - 원본 요청으로 복구 */
+        /* 모바일 네비게이션 배치 (4개 항목 모두 1행씩 분리) */
         @media (max-width: 768px) {
             .navbar {
                 display: flex;
@@ -41,7 +41,7 @@
                 padding: 5px 0;
             }
             .navbar a { 
-                width: 100%; /* 모든 항목이 100% 너비를 차지하여 줄바꿈 */
+                width: 100%; 
                 flex: 0 0 100%; 
                 margin: 5px 0; 
                 padding: 10px 20px;
@@ -54,9 +54,31 @@
         .container { width: 95%; max-width: 800px; margin: 0 auto; padding: 20px 0; }
         h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
         
-        /* 여기에 index.html 고유의 스타일이 들어갈 것이오. */
+        /* 메인 화면 콘텐츠 스타일 */
         .main-content { text-align: center; padding: 50px 0; }
-        
+        .video-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .video-item {
+            width: 30%;
+            min-width: 200px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .video-placeholder {
+            height: 120px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #777;
+        }
     </style>
 </head>
 <body>
@@ -70,8 +92,17 @@
     <div class="container">
         <h2><i class="fas fa-star"></i> 메인 화면</h2>
         <div class="main-content">
-            <p>메인 화면의 **아이콘 3개** 및 **유튜브 영상**이 들어갈 영역이오.</p>
-            <p style="color: red; margin-top: 20px;">이곳에 주인님께서 원하시는 **Mac/iPhone 스타일의 콘텐츠**가 들어가야 하오.</p>
+            <div class="video-grid">
+                <div class="video-item">
+                    <div class="video-placeholder"><i class="fab fa-youtube"></i> Video Placeholder 1</div>
+                </div>
+                <div class="video-item">
+                    <div class="video-placeholder"><i class="fab fa-youtube"></i> Video Placeholder 2</div>
+                </div>
+                <div class="video-item">
+                    <div class="video-placeholder"><i class="fab fa-youtube"></i> Video Placeholder 3</div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
