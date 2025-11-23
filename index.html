@@ -3,109 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 대전 여행 계획</title>
+    <title>여행 계획 메인</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7f6;
-            color: #333;
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
+        
+        /* 고정 네비게이션 스타일 */
+        .navbar {
+            background-color: #4A7C59;
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             text-align: center;
         }
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 0;
+        /* ⚠️ 공백을 추가하여 간격 확보 */
+        .navbar a { 
+            display: inline-block; 
+            color: white; 
+            text-align: center; 
+            padding: 14px 15px; /* 양 옆 패딩을 조금 줄여서 공간 확보 */
+            text-decoration: none; 
+            font-size: 17px; 
+            transition: background-color 0.3s;
         }
-        .header {
-            background-color: #4A7C59;
-            color: white;
-            /* '메인' 버튼 공간이 사라져서 패딩을 다시 조정 */
-            padding: 60px 20px; 
-            border-radius: 10px;
-            margin-bottom: 40px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-        }
-        h1 {
-            font-size: 2.5em;
-            margin: 0; /* 제목 아래 여백도 제거 */
-            white-space: nowrap; 
-        }
+        .navbar a:hover { background-color: #6DB95A; }
+        .navbar a.active { background-color: #6DB95A; font-weight: bold; }
+        .navbar i { margin-right: 5px; }
 
-        /* 아이콘 3개 레이아웃 */
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+        .container { width: 90%; max-width: 800px; margin: 0 auto; padding: 20px 0; text-align: center; }
+        h1 { color: #4A7C59; margin-bottom: 20px; font-size: 2.2em; }
+        p { color: #666; margin-bottom: 30px; font-size: 1.1em; }
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
         }
-        .nav-item {
-            display: block;
+
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 200px;
+            padding: 30px 15px;
+            text-align: center;
             text-decoration: none;
             color: #333;
-            background-color: white;
-            padding: 30px 10px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .nav-item:hover {
+
+        .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-            background-color: #f0f0f0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
-        .nav-item i {
-            font-size: 2em;
+
+        .card i {
+            font-size: 3em;
             color: #6DB95A;
             margin-bottom: 10px;
         }
-        .nav-item strong {
-            display: block;
-            font-size: 1.0em;
-        }
 
-        /* 모바일 최적화 (500px 이하) */
-        @media screen and (max-width: 500px) {
-            .container {
-                padding: 20px 0;
-            }
-            .header {
-                padding: 30px 15px; /* 모바일에서 헤더 패딩 줄임 */
-                margin-bottom: 20px;
-            }
-            h1 {
-                font-size: 2.0em;
-                line-height: 1.2;
-                white-space: normal;
-            }
-            .mobile-only { display: block; }
-            .desktop-only { display: none; }
+        .card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #4A7C59;
         }
-        .mobile-only { display: none; }
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <a href="index.html" class="active"><i class="fas fa-home"></i> 메인</a> 
+        <a href="schedule.html"><i class="fas fa-calendar-alt"></i> 일정</a> 
+        <a href="options.html"><i class="fas fa-utensils"></i> 후보</a> 
+        <a href="maps.html"><i class="fas fa-map-marked-alt"></i> 지도 및 경로</a>
+    </div>
+
     <div class="container">
-        <div class="header">
-            <h1>2025<br class="mobile-only"> 대전 여행<span class="desktop-only"> 계획</span></h1>
-            
-            </div>
+        <h1><i class="fas fa-plane-departure"></i> 2025 대전 여행 계획</h1>
+        <p>여행 일정, 식사 및 관광지 후보, 지도 정보를 한 눈에 확인하세요.</p>
         
-        <div class="nav-grid">
-            <a href="schedule.html" class="nav-item">
+        <div class="card-container">
+            <a href="schedule.html" class="card">
                 <i class="fas fa-calendar-alt"></i>
-                <strong>일정</strong>
+                <div class="card-title">일정</div>
             </a>
-            <a href="options.html" class="nav-item">
+            <a href="options.html" class="card">
                 <i class="fas fa-utensils"></i>
-                <strong>후보</strong>
+                <div class="card-title">후보</div>
             </a>
-            <a href="maps.html" class="nav-item">
+            <a href="maps.html" class="card">
                 <i class="fas fa-map-marked-alt"></i>
-                <strong>지도 및 경로</strong>
+                <div class="card-title">지도 및 경로</div>
             </a>
         </div>
     </div>
