@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>식사, 관광 후보 목록</title>
+    <title>식사, 카페 및 관광지 후보 목록</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
@@ -18,40 +18,125 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             text-align: center;
         }
-        .navbar a { display: inline-block; color: white; text-align: center; padding: 14px 20px; text-decoration: none; font-size: 17px; transition: background-color 0.3s; }
+        .navbar a { 
+            display: inline-block; 
+            color: white; 
+            text-align: center; 
+            padding: 14px 15px;
+            text-decoration: none; 
+            font-size: 17px; 
+            transition: background-color 0.3s;
+            white-space: nowrap; 
+        }
         .navbar a:hover { background-color: #6DB95A; }
         .navbar a.active { background-color: #6DB95A; font-weight: bold; }
         .navbar i { margin-right: 5px; }
 
-        .container { width: 90%; max-width: 1000px; margin: 0 auto; padding: 20px 0; }
+        /* 모바일 네비게이션 배치 (두 줄로) */
+        @media (max-width: 768px) { /* 모바일 화면 크기 기준 */
+            .navbar {
+                display: flex;
+                flex-wrap: wrap; 
+                justify-content: space-evenly; 
+                padding: 5px 0; 
+            }
+            .navbar a {
+                flex: 1 1 auto;
+                min-width: 80px; 
+                padding: 10px 5px; 
+                font-size: 15px; 
+            }
+            .navbar a:first-child { 
+                width: 100%; 
+                flex: none; 
+                max-width: fit-content; 
+                margin: 0 auto; 
+            }
+            .navbar a:not(:first-child) { 
+                width: calc(33.33% - 10px); 
+                margin: 5px; 
+            }
+            /* '일정'이 첫 번째 자식인 경우 (다른 페이지)에 대한 미디어 쿼리 */
+            body:not(.main-page) .navbar a {
+                 width: calc(25% - 10px); 
+                 max-width: 100px;
+                 margin: 5px;
+            }
+            body:not(.main-page) .navbar {
+                justify-content: space-evenly; 
+                padding: 5px 0;
+            }
+        }
+
+        .container { width: 95%; max-width: 800px; margin: 0 auto; padding: 20px 0; }
         h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
-        h3 { color: #6DB95A; border-left: 5px solid #6DB95A; padding-left: 10px; margin-top: 40px; margin-bottom: 15px; }
-
-        /* PC와 모바일 동일 레이아웃을 위한 Wrapper (가로 스크롤 허용) */
-        .table-wrapper {
-            overflow-x: auto; 
-            margin-bottom: 30px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            background-color: #fff;
-        }
-
-        .option-table { 
-            width: 100%; 
-            min-width: 700px; /* 표의 최소 너비를 확보 */
-            border-collapse: collapse; 
-        }
-        .option-table th, .option-table td { 
-            padding: 12px; 
-            border: 1px solid #ddd; 
-            text-align: left; 
-            white-space: normal; /* 텍스트 줄바꿈 허용 */
-            word-break: break-word;
-        }
-        .option-table th { background-color: #4A7C59; color: white; font-weight: bold; text-align: center; }
-        .option-table tr:nth-child(even) { background-color: #f8f8f8; }
-        strong { color: #333; font-weight: bold; }
         
-        /* 하단 링크 스타일: 중앙 정렬 */
+        /* Section Heading */
+        .section-heading { 
+            color: #4A7C59; 
+            font-size: 1.4em; 
+            border-left: 5px solid #6DB95A; 
+            padding-left: 10px; 
+            margin: 40px 0 20px 0; 
+            font-weight: bold;
+        }
+
+        /* Option Item */
+        .option-item {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden; /* Clearfix for floating elements */
+        }
+        .option-item h3 { 
+            color: #6DB95A; 
+            font-size: 1.2em; 
+            border-bottom: 2px solid #6DB95A; 
+            padding-bottom: 5px; 
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Detail List */
+        .detail-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .detail-list li {
+            padding: 5px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex; /* Flexbox for alignment */
+        }
+        .detail-list li:last-child { border-bottom: none; }
+        
+        /* Labels and Values */
+        .detail-list span:first-child {
+            font-weight: bold;
+            color: #4A7C59;
+            width: 80px; /* Label width */
+            flex-shrink: 0;
+        }
+        .detail-list span:last-child {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 480px) {
+            .detail-list li {
+                display: block;
+            }
+            .detail-list span:first-child {
+                width: auto;
+                display: block;
+                margin-bottom: 2px;
+            }
+        }
+
+        /* Back Link Style */
         .back-link { 
             display: block; 
             text-align: center; 
@@ -65,82 +150,119 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="index.html"><i class="fas fa-home"></i> 메인</a>
-        <a href="schedule.html"><i class="fas fa-calendar-alt"></i> 일정</a>
-        <a href="options.html" class="active"><i class="fas fa-utensils"></i> 후보</a>
+        <a href="index.html"><i class="fas fa-home"></i> 메인</a> 
+        <a href="schedule.html"><i class="fas fa-calendar-alt"></i> 일정</a> 
+        <a href="options.html" class="active"><i class="fas fa-utensils"></i> 후보</a> 
         <a href="maps.html"><i class="fas fa-map-marked-alt"></i> 지도 및 경로</a>
     </div>
 
     <div class="container">
         <h2><i class="fas fa-utensils"></i> 식사, 카페 및 관광지 후보 목록</h2>
 
-        <h3><i class="fas fa-utensils"></i> 식사 옵션</h3>
-        <div class="table-wrapper">
-            <table class="option-table">
-                <thead>
-                    <tr>
-                        <th style="width: 15%;">분류</th>
-                        <th style="width: 25%;">상호명</th>
-                        <th style="width: 15%;">가격</th>
-                        <th style="width: 25%;">비고</th>
-                        <th style="width: 20%;">오픈 시간</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>국밥</td><td><strong>선화동 소머리 해장국</strong></td><td>₩10,000</td><td>정기휴무 월요일</td><td>오전 7:00</td></tr>
-                    <tr><td>두부</td><td>광천식당</td><td>₩16,000</td><td></td><td>오전 10:30</td></tr>
-                    <tr><td>자유식</td><td>대전 신세계 내부 식당</td><td></td><td></td><td>오전 11:00</td></tr>
-                </tbody>
-            </table>
+        <div class="section-heading"><i class="fas fa-utensils"></i> 식사 옵션</div>
+        
+        <div class="option-item">
+            <h3>국밥</h3>
+            <ul class="detail-list">
+                <li><span>상호명</span><span>선화동 소머리 해장국</span></li>
+                <li><span>가격</span><span>₩10,000</span></li>
+                <li><span>비고</span><span>정기휴무 월</span></li>
+                <li><span>오픈 시간</span><span>오전 7:00</span></li>
+            </ul>
+        </div>
+        
+        <div class="option-item">
+            <h3>두부</h3>
+            <ul class="detail-list">
+                <li><span>상호명</span><span>광천식당</span></li>
+                <li><span>가격</span><span>₩16,000</span></li>
+                <li><span>비고</span><span></span></li>
+                <li><span>오픈 시간</span><span>오전 10:30</span></li>
+            </ul>
         </div>
 
-        <h3><i class="fas fa-coffee"></i> 카페/디저트 옵션</h3>
-        <div class="table-wrapper">
-            <table class="option-table">
-                <thead>
-                    <tr>
-                        <th style="width: 30%;">상호명</th>
-                        <th style="width: 20%;">가격</th>
-                        <th style="width: 30%;">비고</th>
-                        <th style="width: 20%;">오픈 시간</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td><strong>스타벅스 대전엑스포스카이점</strong></td><td>₩6,900</td><td>38층</td><td>오전 8:00</td></tr>
-                    <tr><td>성심당 문화원</td><td>₩6,000</td><td></td><td>오전 8:00</td></tr>
-                    <tr><td>젤리포에</td><td>₩6,400</td><td></td><td>오전 11:00</td></tr>
-                </tbody>
-            </table>
+        <div class="option-item">
+            <h3>자유식</h3>
+            <ul class="detail-list">
+                <li><span>상호명</span><span>대전 신세계</span></li>
+                <li><span>가격</span><span></span></li>
+                <li><span>비고</span><span>내부에서 식사</span></li>
+                <li><span>오픈 시간</span><span>오전 11:00</span></li>
+            </ul>
         </div>
 
-        <h3><i class="fas fa-leaf"></i> 관광지 및 액티비티 옵션</h3>
-        <div class="table-wrapper">
-            <table class="option-table">
-                <thead>
-                    <tr>
-                        <th style="width: 20%;">분류</th>
-                        <th style="width: 40%;">상호명</th>
-                        <th style="width: 25%;">비고</th>
-                        <th style="width: 15%;">오픈 시간</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>수목원</td><td><strong>한밭 수목원</strong></td><td>화요일 서원 휴무</td><td>오전 5:00</td></tr>
-                    <tr><td>전시관</td><td>대전근현대사전시관</td><td>정기휴무 월요일</td><td>오전 10:00</td></tr>
-                    <tr><td>엑스포</td><td>엑스포 과학공원</td><td>운영시간 변동</td><td></td></tr>
-                    <tr><td>소품샵</td><td>마중</td><td></td><td>오전 11:30</td></tr>
-                </tbody>
-            </table>
+        <div class="section-heading"><i class="fas fa-coffee"></i> 카페/디저트 옵션</div>
+        
+        <div class="option-item">
+            <h3>스타벅스 대전엑스포스카이점</h3>
+            <ul class="detail-list">
+                <li><span>가격</span><span>₩6,900</span></li>
+                <li><span>비고</span><span>38층</span></li>
+                <li><span>오픈 시간</span><span>오전 8:00</span></li>
+            </ul>
+        </div>
+
+        <div class="option-item">
+            <h3>성심당 문화원</h3>
+            <ul class="detail-list">
+                <li><span>가격</span><span>₩6,000</span></li>
+                <li><span>비고</span><span></span></li>
+                <li><span>오픈 시간</span><span>오전 8:00</span></li>
+            </ul>
+        </div>
+
+        <div class="option-item">
+            <h3>젤리포에</h3>
+            <ul class="detail-list">
+                <li><span>가격</span><span>₩6,400</span></li>
+                <li><span>비고</span><span></span></li>
+                <li><span>오픈 시간</span><span>오전 11:00</span></li>
+            </ul>
+        </div>
+
+        <div class="section-heading"><i class="fas fa-camera-retro"></i> 관광 옵션</div>
+
+        <div class="option-item">
+            <h3>한밭 수목원</h3>
+            <ul class="detail-list">
+                <li><span>분류</span><span>수목원</span></li>
+                <li><span>가격</span><span></span></li>
+                <li><span>비고</span><span>화요일 서원 휴무</span></li>
+                <li><span>오픈 시간</span><span>오전 5:00</span></li>
+            </ul>
+        </div>
+        
+        <div class="option-item">
+            <h3>대전근현대사전시관</h3>
+            <ul class="detail-list">
+                <li><span>분류</span><span>전시관</span></li>
+                <li><span>가격</span><span></span></li>
+                <li><span>비고</span><span>정기휴무 월</span></li>
+                <li><span>오픈 시간</span><span>오전 10:00</span></li>
+            </ul>
+        </div>
+        
+        <div class="option-item">
+            <h3>엑스포 과학공원</h3>
+            <ul class="detail-list">
+                <li><span>분류</span><span>엑스포</span></li>
+                <li><span>가격</span><span>변동</span></li>
+                <li><span>비고</span><span></span></li>
+                <li><span>오픈 시간</span><span></span></li>
+            </ul>
+        </div>
+
+        <div class="option-item">
+            <h3>마중</h3>
+            <ul class="detail-list">
+                <li><span>분류</span><span>소품샵</span></li>
+                <li><span>가격</span><span></span></li>
+                <li><span>비고</span><span></span></li>
+                <li><span>오픈 시간</span><span>오전 11:30</span></li>
+            </ul>
         </div>
 
         <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> 메인 페이지로 돌아가기</a>
     </div>
 </body>
 </html>
-
-<div class="navbar">
-    <a href="index.html"><i class="fas fa-home"></i> 메인</a> 
-    <a href="schedule.html"><i class="fas fa-calendar-alt"></i> 일정</a> 
-    <a href="options.html" class="active"><i class="fas fa-utensils"></i> 후보</a> 
-    <a href="maps.html"><i class="fas fa-map-marked-alt"></i> 지도 및 경로</a>
-</div>
