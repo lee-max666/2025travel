@@ -86,7 +86,7 @@
 
         .option-table { 
             width: 100%; 
-            min-width: 600px; 
+            min-width: 650px; /* 열이 4개가 되었으므로 최소 너비 확장 */
             border-collapse: collapse; 
             table-layout: fixed; 
         }
@@ -109,12 +109,11 @@
             word-break: break-word; 
         }
         
-        /* 항목 열 너비 */
-        .option-table td:nth-child(1) { width: 35%; text-align: left; padding-left: 15px; font-weight: bold; }
-        /* 가격 열 너비 */
-        .option-table td:nth-child(2) { width: 20%; }
-        /* 비고 열 너비 */
-        .option-table td:nth-child(3) { width: 45%; font-size: 0.9em; color: #555; }
+        /* 항목 열 너비 재조정 (4개 열에 맞게) */
+        .option-table td:nth-child(1) { width: 30%; text-align: left; padding-left: 15px; font-weight: bold; } /* 항목 */
+        .option-table td:nth-child(2) { width: 15%; } /* 비용 */
+        .option-table td:nth-child(3) { width: 20%; } /* 오픈 시간 */
+        .option-table td:nth-child(4) { width: 35%; font-size: 0.9em; color: #555; } /* 비고 */
 
         .option-table tbody tr:nth-child(even) { background-color: #f7fff6; }
         .option-table tbody tr:hover { background-color: #f0f7ef; }
@@ -138,14 +137,15 @@
                     <thead>
                         <tr>
                             <th>항목</th>
-                            <th>가격/비용</th>
+                            <th>비용</th>
+                            <th>오픈 시간</th>
                             <th>비고</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>선화동 소머리 해장국 (국밥)</td><td>₩10,000</td><td>정기휴무: 월요일, 오전 7:00 오픈</td></tr>
-                        <tr><td>광천식당 (두부)</td><td>₩16,000</td><td>오전 10:30 오픈</td></tr>
-                        <tr><td>대전 신세계 내부 식사</td><td></td><td>오전 11:00 오픈</td></tr>
+                        <tr><td>선화동 소머리 해장국</td><td>₩10,000</td><td>오전 7:00</td><td>정기휴무: 월요일</td></tr>
+                        <tr><td>광천식당</td><td>₩16,000</td><td>오전 10:30</td><td></td></tr>
+                        <tr><td>대전 신세계 내부 식사</td><td></td><td>오전 11:00</td><td></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -158,14 +158,15 @@
                     <thead>
                         <tr>
                             <th>항목</th>
-                            <th>가격/비용</th>
+                            <th>비용</th>
+                            <th>오픈 시간</th>
                             <th>비고</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>스타벅스 대전엑스포스카이점</td><td>₩6,900</td><td>38층, 오전 8:00 오픈</td></tr>
-                        <tr><td>성심당 문화원</td><td>₩6,000</td><td>오전 8:00 오픈</td></tr>
-                        <tr><td>젤리포에</td><td>₩6,400</td><td>오전 11:00 오픈</td></tr>
+                        <tr><td>스타벅스 대전엑스포스카이점</td><td>₩6,900</td><td>오전 8:00</td><td>38층</td></tr>
+                        <tr><td>성심당 문화원</td><td>₩6,000</td><td>오전 8:00</td><td></td></tr>
+                        <tr><td>젤리포에</td><td>₩6,400</td><td>오전 11:00</td><td></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -178,15 +179,16 @@
                     <thead>
                         <tr>
                             <th>항목</th>
-                            <th>가격/비용</th>
+                            <th>비용</th>
+                            <th>오픈 시간</th>
                             <th>비고</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>한밭 수목원</td><td></td><td>화요일 서원 휴무, 오전 5:00 오픈</td></tr>
-                        <tr><td>대전근현대사전시관 (전시관)</td><td></td><td>정기휴무: 월요일, 오전 10:00 오픈</td></tr>
-                        <tr><td>엑스포 과학공원 (엑스포)</td><td></td><td>오픈 시간 변동</td></tr>
-                        <tr><td>마중 (소품샵)</td><td></td><td>오전 11:30 오픈</td></tr>
+                        <tr><td>한밭 수목원</td><td></td><td>오전 5:00</td><td>화요일 서원 휴무</td></tr>
+                        <tr><td>대전근현대사전시관</td><td></td><td>오전 10:00</td><td>정기휴무: 월요일</td></tr>
+                        <tr><td>엑스포 과학공원</td><td></td><td>오픈 시간 변동</td><td></td></tr>
+                        <tr><td>마중 (소품샵)</td><td></td><td>오전 11:30</td><td></td></tr>
                     </tbody>
                 </table>
             </div>
