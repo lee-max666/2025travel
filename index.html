@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 당일치기 KTX 여정 기록</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6; /* 연한 배경색 */
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        h1 {
+            color: #4A7C59; /* 짙은 초록색 */
+            text-align: center;
+            padding: 20px 0 10px;
+            border-bottom: 3px solid #6DB95A; /* 밝은 초록색 */
+        }
+        h2 {
+            color: #6DB95A; /* 밝은 초록색 */
+            border-left: 5px solid #6DB95A; /* 밝은 초록색 */
+            padding-left: 10px;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        /* 아이콘과 제목 간격 조정 */
+        h2 i {
+            margin-right: 8px; 
+        }
+
+        /* 일정표 스타일 */
+        .schedule-table, .option-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+        .schedule-table th, .schedule-table td, 
+        .option-table th, .option-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .schedule-table th, .option-table th {
+            background-color: #4A7C59; /* 짙은 초록색 */
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+        .schedule-table tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+        .time-col {
+            background-color: #6DB95A; /* 밝은 초록색 */
+            color: white;
+            font-weight: bold;
+            text-align: center !important;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #D63447; /* 강조색 (빨간색) */
+        }
+        .activity-col {
+            font-style: italic;
+        }
+        /* 지도 컨테이너 스타일 */
+        .map-container {
+            width: 100%; 
+            overflow: hidden; 
+            margin-top: 20px;
+        }
+        /* 귀여운 이미지/로고 스타일 */
+        .logo {
+            display: block;
+            margin: 10px auto 30px;
+            width: 150px; /* 크기 조정 가능 */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>나의 당일치기 KTX 여정 기록</h1>
+        <h2><i class="fas fa-clipboard-list"></i> 당일치기 상세 일정</h2>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 8%;">시간</th>
+                    <th style="width: 25%;">출발지/목적지</th>
+                    <th style="width: 15%;">교통수단</th>
+                    <th style="width: 10%;">소요 시간</th>
+                    <th style="width: 8%;">비용</th>
+                    <th>주요 활동/비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="time-col">06:00</td><td>집 - 물금역</td><td><i class="fas fa-taxi"></i> 택시</td><td>15분</td><td>₩10,000</td><td>여정 시작</td></tr>
+                <tr><td class="time-col">06:30</td><td>물금역 - 대전역</td><td><i class="fas fa-train"></i> 기차</td><td>1시간 44분</td><td>₩28,100</td><td>대전으로 이동</td></tr>
+                <tr><td class="time-col">08:26</td><td>대전역 - 중앙로역</td><td><i class="fas fa-subway"></i> 지하철</td><td>5분</td><td>₩1,550</td><td>빠른 하차 4-2</td></tr>
+                <tr><td class="time-col">08:31</td><td>중앙로역 - 성심당</td><td><i class="fas fa-walking"></i> 도보</td><td>3분</td><td></td><td class="activity-col"><span class="highlight">성심당 본점/샌드위치 정거장 방문</span></td></tr>
+                <tr><td class="time-col">09:30</td><td>선화동 소머리 해장국</td><td><i class="fas fa-utensils"></i> 식사</td><td>30분</td><td>₩10,000</td><td>아침 식사 확정</td></tr>
+                <tr><td class="time-col">10:00</td><td>선화동 - 한밭수목원</td><td><i class="fas fa-bus"></i> 버스(108번)</td><td>45분</td><td>₩1,500</td><td>(하차 후 도보 23분)</td></tr>
+                <tr><td class="time-col">12:19</td><td>대전 신세계 도착</td><td><i class="fas fa-mug-hot"></i> 카페</td><td></td><td></td><td class="activity-col"><span class="highlight">스타벅스 대전엑스포스카이점</span> (38층)</td></tr>
+                <tr><td class="time-col">13:50</td><td>스타벅스 - 대전역</td><td><i class="fas fa-bus"></i> 버스(606/707번)</td><td>44분~1시간</td><td>₩1,500</td><td>대전역으로 복귀</td></tr>
+                <tr><td class="time-col">15:34</td><td>대전역 - 울산</td><td><i class="fas fa-train"></i> 기차</td><td>1시간 15분</td><td>₩30,100</td><td>울산으로 이동</td></tr>
+                <tr><td class="time-col">16:50</td><td>울산역 - 집</td><td><i class="fas fa-bus"></i> 버스(3000번)</td><td>1시간</td><td>₩3,500</td><td><span class="highlight">울산역(시내방면) 탑승 - 신도시 현대 청어람 하차</span></td></tr>
+                <tr><td class="time-col">18:15</td><td>종료</td><td></td><td></td><td></td><td>여행 마무리</td></tr>
+            </tbody>
+        </table>
+
+        <h2><i class="fas fa-utensils"></i> 식사 옵션 및 후보</h2>
+        <table class="option-table">
+            <thead>
+                <tr>
+                    <th style="width: 15%;">분류</th>
+                    <th style="width: 30%;">상호명</th>
+                    <th style="width: 10%;">가격</th>
+                    <th style="width: 25%;">비고</th>
+                    <th style="width: 20%;">오픈 시간</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>확정 (국밥)</td><td><span class="highlight">선화동 소머리 해장국</span></td><td>₩10,000</td><td>정기휴무 월요일</td><td>오전 7:00</td></tr>
+                <tr><td>후보 (두부)</td><td>광천식당</td><td>₩16,000</td><td></td><td>오전 10:30</td></tr>
+                <tr><td>후보 (자유식)</td><td>대전 신세계 내부 식당</td><td>변동</td><td></td><td>오전 11:00</td></tr>
+            </tbody>
+        </table>
+
+        <h2><i class="fas fa-coffee"></i> 카페/디저트 옵션</h2>
+        <table class="option-table">
+            <thead>
+                <tr>
+                    <th style="width: 40%;">상호명</th>
+                    <th style="width: 15%;">가격 (예시)</th>
+                    <th style="width: 30%;">비고</th>
+                    <th style="width: 15%;">오픈 시간</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="highlight">스타벅스 대전엑스포스카이점 (확정)</span></td><td>₩6,900</td><td>38층 (전망 좋음)</td><td>오전 8:00</td></tr>
+                <tr><td>성심당 문화원</td><td>₩6,000</td><td></td><td>오전 8:00</td></tr>
+                <tr><td>젤리포에</td><td>₩6,400</td><td></td><td>오전 11:00</td></tr>
+            </tbody>
+        </table>
+
+        <h2><i class="fas fa-tree"></i> 관광지 및 액티비티 옵션</h2>
+        <table class="option-table">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">분류</th>
+                    <th style="width: 40%;">상호명</th>
+                    <th style="width: 25%;">비고</th>
+                    <th style="width: 15%;">오픈 시간</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>확정 (수목원)</td><td><span class="highlight">한밭 수목원</span></td><td>화요일 서원 휴무</td><td>오전 5:00</td></tr>
+                <tr><td>후보 (전시관)</td><td>대전근현대사전시관</td><td>정기휴무 월요일</td><td>오전 10:00</td></tr>
+                <tr><td>후보 (엑스포)</td><td>엑스포 과학공원</td><td>운영시간 변동</td><td>변동</td></tr>
+                <tr><td>후보 (소품샵)</td><td>마중</td><td></td><td>오전 11:30</td></tr>
+            </tbody>
+        </table>
+        
+        <h2><i class="fas fa-map-marked-alt"></i> 주요 일정 지도 미리보기</h2>
+        <div class="map-container">
+            <p style="text-align: center; padding: 50px; border: 1px dashed #ccc;">
+                여기에 구글 지도의 <iframe> 삽입 코드를 붙여넣으세요.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
