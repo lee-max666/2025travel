@@ -18,10 +18,55 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             text-align: center;
         }
-        .navbar a { display: inline-block; color: white; text-align: center; padding: 14px 20px; text-decoration: none; font-size: 17px; transition: background-color 0.3s; }
+        .navbar a { 
+            display: inline-block; 
+            color: white; 
+            text-align: center; 
+            padding: 14px 15px;
+            text-decoration: none; 
+            font-size: 17px; 
+            transition: background-color 0.3s;
+            white-space: nowrap; 
+        }
         .navbar a:hover { background-color: #6DB95A; }
         .navbar a.active { background-color: #6DB95A; font-weight: bold; }
         .navbar i { margin-right: 5px; }
+
+        /* 모바일 네비게이션 배치 (두 줄로) */
+        @media (max-width: 768px) { /* 모바일 화면 크기 기준 */
+            .navbar {
+                display: flex;
+                flex-wrap: wrap; 
+                justify-content: space-evenly; 
+                padding: 5px 0; 
+            }
+            .navbar a {
+                flex: 1 1 auto;
+                min-width: 80px; 
+                padding: 10px 5px; 
+                font-size: 15px; 
+            }
+            .navbar a:first-child { 
+                width: 100%; 
+                flex: none; 
+                max-width: fit-content; 
+                margin: 0 auto; 
+            }
+            .navbar a:not(:first-child) { 
+                width: calc(33.33% - 10px); 
+                margin: 5px; 
+            }
+            /* '일정'이 첫 번째 자식인 경우 (다른 페이지)에 대한 미디어 쿼리 */
+            body:not(.main-page) .navbar a {
+                 width: calc(25% - 10px); 
+                 max-width: 100px;
+                 margin: 5px;
+            }
+            body:not(.main-page) .navbar {
+                justify-content: space-evenly; 
+                padding: 5px 0;
+            }
+        }
 
         .container { width: 90%; max-width: 800px; margin: 0 auto; padding: 20px 0; }
         h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
@@ -82,9 +127,9 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="index.html"><i class="fas fa-home"></i> 메인</a>
-        <a href="schedule.html"><i class="fas fa-calendar-alt"></i> 일정</a>
-        <a href="options.html"><i class="fas fa-utensils"></i> 후보</a>
+        <a href="index.html"><i class="fas fa-home"></i> 메인</a> 
+        <a href="schedule.html"><i class="fas fa-calendar-alt"></i> 일정</a> 
+        <a href="options.html"><i class="fas fa-utensils"></i> 후보</a> 
         <a href="maps.html" class="active"><i class="fas fa-map-marked-alt"></i> 지도 및 경로</a>
     </div>
 
@@ -113,10 +158,3 @@
     </div>
 </body>
 </html>
-
-<div class="navbar">
-    <a href="index.html"><i class="fas fa-home"></i> 메인</a> 
-    <a href="schedule.html"><i class="fas fa-calendar-alt"></i> 일정</a> 
-    <a href="options.html"><i class="fas fa-utensils"></i> 후보</a> 
-    <a href="maps.html" class="active"><i class="fas fa-map-marked-alt"></i> 지도 및 경로</a>
-</div>
