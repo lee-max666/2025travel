@@ -31,12 +31,9 @@
         }
         h1 {
             font-size: 2.5em;
-            margin: 0 0 10px;
+            margin: 0; /* 부제목 제거에 따라 마진 제거 */
         }
-        .sub-title {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
+        /* 부제목 스타일 제거 */
         .nav-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -65,31 +62,29 @@
         .nav-item strong {
             display: block;
             font-size: 1.1em;
+            margin-bottom: 5px; /* 텍스트 변경에 따른 마진 조정 */
         }
+        /* 추가 설명 텍스트 제거 */
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>2025 대전 여행 계획</h1>
-            <p class="sub-title">12월 23일 상세 일정 및 정보</p>
         </div>
 
         <div class="nav-grid">
             <a href="schedule.html" class="nav-item">
                 <i class="fas fa-calendar-alt"></i>
-                <strong>1. 12월 23일 상세 일정</strong>
-                <p style="font-size: 0.9em; margin: 5px 0 0;">확정된 시간표를 확인하세요.</p>
+                <strong>일정</strong>
             </a>
             <a href="options.html" class="nav-item">
                 <i class="fas fa-utensils"></i>
-                <strong>2. 식사/관광 후보 목록</strong>
-                <p style="font-size: 0.9em; margin: 5px 0 0;">선택 가능한 후보지를 확인하세요.</p>
+                <strong>후보</strong>
             </a>
             <a href="maps.html" class="nav-item">
                 <i class="fas fa-map-marked-alt"></i>
-                <strong>3. 지도 및 경로 (네이버/구글)</strong>
-                <p style="font-size: 0.9em; margin: 5px 0 0;">경로와 리스트를 확인하세요.</p>
+                <strong>지도 및 경로</strong>
             </a>
         </div>
     </div>
