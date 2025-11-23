@@ -36,11 +36,20 @@
             margin-top: 40px;
             margin-bottom: 15px;
         }
+        /* H2 내부 링크 스타일 */
+        h2 a {
+            color: #6DB95A !important;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        h2 a:hover {
+            color: #4A7C59 !important;
+        }
         h2 i {
             margin-right: 8px; 
         }
 
-        /* 내비게이션 바 스타일 */
+        /* 내비게이션 바 스타일 (스크롤 시 상단 고정) */
         .navbar {
             background-color: #4A7C59;
             overflow: hidden;
@@ -101,10 +110,23 @@
         .activity-col {
             font-style: normal;
         }
-        .map-container {
+        /* 지도 컨테이너 스타일 */
+        .map-container, .naver-list-container {
             width: 100%; 
             overflow: hidden; 
             margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .link-placeholder {
+            text-align: center; 
+            padding: 30px 0; 
+            border: 1px dashed #ccc;
+            background-color: #f8f8f8;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -113,9 +135,10 @@
         <h1>2025 대전 일정</h1>
 
         <div class="navbar">
-            <a href="#schedule"><i class="fas fa-clipboard-list"></i> 일정</a>
-            <a href="#options"><i class="fas fa-utensils"></i> 후보</a>
-            <a href="#map"><i class="fas fa-map-marked-alt"></i> 지도</a>
+            <a href="schedule.html"><i class="fas fa-clipboard-list"></i> 일정</a>
+            <a href="options.html"><i class="fas fa-utensils"></i> 후보</a>
+            <a href="google_map.html"><i class="fas fa-map-marked-alt"></i> 구글 지도</a>
+            <a href="naver_list.html"><i class="fas fa-list-ul"></i> 네이버 리스트</a>
         </div>
 
         <h2 id="schedule"><i class="fas fa-clipboard-list"></i> 당일치기 상세 일정</h2>
@@ -171,7 +194,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td><strong>스타벅스 대전엑스포스카이점</strong></td><td>38층 </td><td>오전 8:00</td></tr>
+                <tr><td><strong>스타벅스 대전엑스포스카이점</strong></td><td>38층</td><td>오전 8:00</td></tr>
                 <tr><td>성심당 문화원</td><td></td><td>오전 8:00</td></tr>
                 <tr><td>젤리포에</td><td></td><td>오전 11:00</td></tr>
             </tbody>
@@ -195,18 +218,40 @@
             </tbody>
         </table>
         
-        <h2 id="map"><i class="fas fa-map-marked-alt"></i> 주요 일정 지도 미리보기</h2>
+        <h2 id="google-map">
+            <a href="https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4Xb6uaQ2RBXL_nk&usp=sharing" target="_blank" style="color: #6DB95A; text-decoration: none;"> 
+                <i class="fas fa-map-marked-alt"></i> 구글 지도 미리보기 "https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4xb6uaQ2RBXL_nk&usp=sharing"
+            </a>
+        </h2>
         <div class="map-container">
-            <p style="text-align: center; padding: 50px; border: 1px dashed #ccc;">
-                https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4xb6uaQ2RBXL_nk&usp=sharing
-           </p>
+            <div class="link-placeholder">
+                <p>
+                    <a href="https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4Xb6uaQ2RBXL_nk&usp=sharing" target="_blank" style="color: #4A7C59; font-weight: bold; text-decoration: underline;">
+                        구글 지도 (내 지도) 링크로 이동
+                    </a>
+                </p>
+                <p style="margin-top: 5px;">
+                    (클릭하시면 새로운 창에서 지도 페이지가 열립니다.)
+                </p>
+            </div>
         </div>
 
-        <h2 id="naver-list"><i class="fas fa-list-ul"></i> 네이버 지도 리스트</h2>
+        <h2 id="naver-list">
+            <a href="https://naver.me/59UIKof2w" target="_blank" style="color: #6DB95A; text-decoration: none;"> 
+                <i class="fas fa-list-ul"></i> 네이버 지도 리스트 "https://naver.me/59UKof2w"
+            </a>
+        </h2>
         <div class="naver-list-container">
-            <p style="text-align: center; padding: 50px; border: 1px dashed #ccc;">
-               https://naver.me/59UKof2w
-            </p>
+            <div class="link-placeholder">
+                <p>
+                    <a href="https://naver.me/59UIKof2w" target="_blank" style="color: #4A7C59; font-weight: bold; text-decoration: underline;">
+                        네이버 리스트 링크로 이동
+                    </a>
+                </p>
+                <p style="margin-top: 5px;">
+                    (클릭하시면 새로운 창에서 리스트 페이지가 열립니다.)
+                </p>
+            </div>
         </div>
     </div>
 </body>
