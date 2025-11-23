@@ -46,20 +46,25 @@
         h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
         h3 { color: #6DB95A; border-left: 5px solid #6DB95A; padding-left: 10px; margin-top: 40px; margin-bottom: 15px; }
         
-        /* 💡 추가: 표를 감싸서 가로 스크롤이 생기도록 함 */
+        /* ⚠️ 수정: 가로 스크롤 유발하는 wrapper 역할 제거 및 마진/그림자만 유지 */
         .table-wrapper {
-            overflow-x: auto;
             margin-bottom: 30px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             background-color: #fff;
+            /* overflow-x: auto; 제거됨 */
         }
 
         .option-table { 
             width: 100%; 
-            min-width: 600px; /* 모바일에서 표가 너무 찌그러지는 것 방지 (가로 스크롤 유도) */
             border-collapse: collapse; 
         }
-        .option-table th, .option-table td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        .option-table th, .option-table td { 
+            padding: 12px; 
+            border: 1px solid #ddd; 
+            text-align: left; 
+            /* 💡 추가: 모바일에서 텍스트 자동 줄 바꿈 허용 */
+            word-break: break-word; 
+        }
         .option-table th { background-color: #4A7C59; color: white; font-weight: bold; text-align: center; }
         .option-table tr:nth-child(even) { background-color: #f8f8f8; }
         strong { color: #333; font-weight: bold; }
@@ -67,8 +72,6 @@
         /* 하단 링크 스타일 */
         .back-link { display: block; text-align: center; margin-top: 30px; font-size: 1.1em; color: #6DB95A; text-decoration: none; }
         .back-link:hover { text-decoration: underline; }
-
-        /* ⚠️ 이전의 모바일 반응형 CSS (표 세로 변환)는 모두 제거됨 */
     </style>
 </head>
 <body>
