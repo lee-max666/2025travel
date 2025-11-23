@@ -6,75 +6,56 @@
     <title>여행 일정 상세</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
-        .navbar { /* ... (스타일 유지) ... */ }
-        .container { width: 90%; max-width: 1000px; margin: 0 auto; padding: 20px 0; }
-        h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
-        h3 { color: #6DB95A; border-left: 5px solid #6DB95A; padding-left: 10px; margin-top: 40px; margin-bottom: 15px; }
-
-        /* PC 기본 스타일 */
-        .schedule-table { width: 100%; border-collapse: collapse; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #fff; margin-bottom: 30px; }
-        .schedule-table th, .schedule-table td { padding: 12px; border: 1px solid #ddd; text-align: center; }
-        .schedule-table th { background-color: #4A7C59; color: white; font-weight: bold; }
-        .schedule-table tr:nth-child(even) { background-color: #f8f8f8; }
-
-        /* 💡 모바일 반응형 CSS: 세로 스크롤 전용 블록 디자인 (가로 스크롤 방지) */
-        @media screen and (max-width: 600px) {
-            .schedule-table, .schedule-table tbody, .schedule-table tr, .schedule-table td {
-                display: block;
-                width: 100%;
-            }
-            .schedule-table thead {
-                display: none; /* 헤더 숨기기 */
-            }
-            .schedule-table tr {
-                margin-bottom: 15px;
-                border: 1px solid #ddd;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            }
-            .schedule-table td {
-                text-align: right;
-                padding-left: 50%; /* 라벨 공간 확보 */
-                position: relative;
-                border: none;
-                /* 내용이 길 때 줄 바꿈 및 흰 공백 유지 설정 */
-                word-wrap: break-word; 
-                white-space: normal;
-                border-bottom: 1px solid #eee; /* 가독성을 위해 셀 간 구분선 추가 */
-            }
-            .schedule-table tr td:last-child {
-                border-bottom: none; /* 마지막 셀 구분선 제거 */
-            }
-            
-            /* 셀 내용 앞에 헤더 역할의 라벨 추가 */
-            .schedule-table td::before {
-                content: attr(data-label);
-                position: absolute;
-                left: 12px;
-                width: 45%; 
-                padding-right: 10px;
-                text-align: left;
-                font-weight: bold;
-                color: #4A7C59;
-            }
-            
-            /* 첫 번째 td (시간)는 타이틀로 강조 */
-            .schedule-table tr td:first-child {
-                background-color: #e0f0e0;
-                font-size: 1.1em;
-                font-weight: bold;
-                text-align: center; /* 시간은 중앙 정렬 */
-                padding-left: 12px;
-                color: #333;
-                padding-right: 12px; /* 오른쪽 패딩 추가 */
-                border-bottom: 1px solid #ddd;
-            }
-            .schedule-table tr td:first-child::before {
-                content: ''; /* 시간 셀에서는 라벨 숨김 (이미 시간이 큼) */
-            }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
         }
+        /* ... (Navbar, Container, H2/H3 스타일은 생략) ... */
+        
+        /* 💡 수정: 가로 스크롤 허용 Wrapper를 컨테이너 안에 넣습니다. */
+        .table-wrapper {
+            overflow-x: auto; /* 가로 스크롤 허용 */
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+
+        .schedule-table { 
+            width: 100%; 
+            min-width: 650px; /* PC처럼 보이도록 최소 너비 지정 */
+            border-collapse: collapse; 
+        }
+        .schedule-table th, .schedule-table td { 
+            padding: 12px; 
+            border: 1px solid #ddd; 
+            text-align: center; 
+            white-space: nowrap; /* 줄 바꿈 금지 (PC 동일) */
+        }
+        .schedule-table th { 
+            background-color: #4A7C59; 
+            color: white; 
+            font-weight: bold; 
+        }
+        .schedule-table tr:nth-child(even) { 
+            background-color: #f8f8f8; 
+        }
+        
+        /* ⚠️ 모든 모바일 반응형 CSS(@media screen and ...) 제거 */
+
         /* 하단 링크 스타일 */
-        .back-link { /* ... (스타일 유지) ... */ }
+        .back-link { 
+            display: block; 
+            text-align: center; 
+            margin-top: 30px; 
+            font-size: 1.1em; 
+            color: #6DB95A; 
+            text-decoration: none; 
+        }
+        .back-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -89,27 +70,28 @@
         <h2><i class="fas fa-calendar-alt"></i> 여행 상세 일정</h2>
 
         <h3><i class="fas fa-sun"></i> 1일차</h3>
-        <table class="schedule-table">
-            <thead>
-                <tr>
-                    <th style="width: 10%;">시간</th>
-                    <th style="width: 25%;">경로</th>
-                    <th style="width: 45%;">일정/목적지</th>
-                    <th style="width: 20%;">비고</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td data-label="시간">07:00</td><td data-label="경로">집 - 물금역</td><td data-label="일정/목적지">출발 및 이동</td><td data-label="비고">KTX(SRT) 탑승</td></tr>
-                <tr><td data-label="시간">08:00</td><td data-label="경로">물금역 - 대전역</td><td data-label="일정/목적지">이동</td><td data-label="비고"></td></tr>
-                <tr><td data-label="시간">10:00</td><td data-label="경로">대전역 - 식당</td><td data-label="일정/목적지">식사</td><td data-label="비고">선화동 소머리 해장국</td></tr>
-                <tr><td data-label="시간">11:00</td><td data-label="경로">식당 - 스타벅스</td><td data-label="일정/목적지">커피 및 휴식</td><td data-label="비고">스타벅스 대전엑스포스카이점 38층</td></tr>
-                <tr><td data-label="시간">13:00</td><td data-label="경로">스타벅스 - 대전신세계</td><td data-label="일정/목적지">쇼핑/자유시간</td><td data-label="비고"></td></tr>
-                <tr><td data-label="시간">17:00</td><td data-label="경로">대전신세계 - 숙소</td><td data-label="일정/목적지">체크인 및 휴식</td><td data-label="비고"></td></tr>
-                <tr><td data-label="시간">19:00</td><td data-label="경로">숙소 - 저녁식사</td><td data-label="일정/목적지">저녁식사</td><td data-label="비고">광천식당</td></tr>
-                <tr><td data-label="시간">20:00</td><td data-label="경로">저녁식사 - 숙소</td><td data-label="일정/목적지">귀가 및 취침</td><td data-label="비고"></td></tr>
-            </tbody>
-        </table>
-
+        <div class="table-wrapper">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">시간</th>
+                        <th style="width: 25%;">경로</th>
+                        <th style="width: 45%;">일정/목적지</th>
+                        <th style="width: 20%;">비고</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>07:00</td><td>집 - 물금역</td><td>출발 및 이동</td><td>KTX(SRT) 탑승</td></tr>
+                    <tr><td>08:00</td><td>물금역 - 대전역</td><td>이동</td><td></td></tr>
+                    <tr><td>10:00</td><td>대전역 - 식당</td><td>식사</td><td>선화동 소머리 해장국</td></tr>
+                    <tr><td>11:00</td><td>식당 - 스타벅스</td><td>커피 및 휴식</td><td>스타벅스 대전엑스포스카이점 38층</td></tr>
+                    <tr><td>13:00</td><td>스타벅스 - 대전신세계</td><td>쇼핑/자유시간</td><td></td></tr>
+                    <tr><td>17:00</td><td>대전신세계 - 숙소</td><td>체크인 및 휴식</td><td></td></tr>
+                    <tr><td>19:00</td><td>숙소 - 저녁식사</td><td>저녁식사</td><td>광천식당</td></tr>
+                    <tr><td>20:00</td><td>저녁식사 - 숙소</td><td>귀가 및 취침</td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
         <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> 메인 페이지로 돌아가기</a>
     </div>
 </body>
