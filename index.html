@@ -88,6 +88,7 @@
             padding: 12px;
             border: 1px solid #ddd;
             text-align: left;
+            vertical-align: middle; /* 세로 정렬 추가 */
         }
         .schedule-table th, .option-table th {
             background-color: #4A7C59;
@@ -101,6 +102,12 @@
         /* 일정 칸 중앙 정렬 */
         .schedule-col {
             text-align: center !important;
+        }
+        /* 시간 열 스타일 (원본 이미지의 녹색 배경 복원) */
+        .time-col {
+            background-color: #5cb85c !important; /* 진한 녹색 */
+            color: white !important; /* 흰색 텍스트 */
+            font-weight: bold;
         }
         /* 굵은 검정색 강조 */
         strong {
@@ -145,23 +152,23 @@
         <table class="schedule-table">
             <thead>
                 <tr>
-                    <th style="width: 25%;">일정</th>
+                    <th style="width: 10%;">시간</th> <th style="width: 25%;">일정</th>
                     <th style="width: 15%;">교통수단</th>
-                    <th style="width: 60%;">비고</th>
+                    <th style="width: 50%;">비고</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td class="schedule-col">집 - 물금역</td><td><i class="fas fa-taxi"></i> 택시</td><td>여정 시작</td></tr>
-                <tr><td class="schedule-col">물금역 - 대전역</td><td><i class="fas fa-train"></i> 기차</td><td>대전으로 이동</td></tr>
-                <tr><td class="schedule-col">대전역 - 중앙로역</td><td><i class="fas fa-subway"></i> 지하철</td><td>빠른 하차 4-2</td></tr>
-                <tr><td class="schedule-col">중앙로역 - 성심당</td><td><i class="fas fa-walking"></i> 도보</td><td class="activity-col"><strong>성심당 본점/샌드위치 정거장 방문</strong></td></tr>
-                <tr><td class="schedule-col">선화동 소머리 해장국</td><td><i class="fas fa-utensils"></i> 식사</td><td>아침 식사</td></tr>
-                <tr><td class="schedule-col">선화동 - 한밭수목원</td><td><i class="fas fa-bus"></i><i class="fas fa-walking" style="margin-left: 5px;"></i></td><td>(하차 후 도보 약 23분)</td></tr>
-                <tr><td class="schedule-col">대전 신세계 도착</td><td><i class="fas fa-mug-hot"></i> 카페</td><td class="activity-col"><strong>스타벅스 대전엑스포스카이점</strong> (38층)</td></tr>
-                <tr><td class="schedule-col">스타벅스 - 대전역</td><td><i class="fas fa-bus"></i> 버스(606/707번)</td><td>대전역으로 복귀</td></tr>
-                <tr><td class="schedule-col">대전역 - 울산</td><td><i class="fas fa-train"></i> 기차</td><td>울산으로 이동</td></tr>
-                <tr><td class="schedule-col">울산역 - 집</td><td><i class="fas fa-bus"></i> 버스(3000번)</td><td><strong>울산역(시내방면) 탑승 - 신도시 현대 청어람 하차</strong></td></tr>
-                <tr><td class="schedule-col">종료</td><td></td><td>여행 마무리</td></tr>
+                <tr><td class="schedule-col time-col">06:00</td><td class="schedule-col">집 - 물금역</td><td><i class="fas fa-taxi"></i> 택시</td><td>여정 시작</td></tr>
+                <tr><td class="schedule-col time-col">06:30</td><td class="schedule-col">물금역 - 대전역</td><td><i class="fas fa-train"></i> 기차</td><td>대전으로 이동</td></tr>
+                <tr><td class="schedule-col time-col">08:26</td><td class="schedule-col">대전역 - 중앙로역</td><td><i class="fas fa-subway"></i> 지하철</td><td>빠른 하차 4-2</td></tr>
+                <tr><td class="schedule-col time-col">08:31</td><td class="schedule-col">중앙로역 - 성심당</td><td><i class="fas fa-walking"></i> 도보</td><td class="activity-col"><strong>성심당 본점/샌드위치 정거장 방문</strong></td></tr>
+                <tr><td class="schedule-col time-col">09:30</td><td class="schedule-col">선화동 소머리 해장국</td><td><i class="fas fa-utensils"></i> 식사</td><td>아침 식사</td></tr>
+                <tr><td class="schedule-col time-col">10:00</td><td class="schedule-col">선화동 - 한밭수목원</td><td><i class="fas fa-bus"></i><i class="fas fa-walking" style="margin-left: 5px;"></i></td><td>(하차 후 도보 약 23분)</td></tr>
+                <tr><td class="schedule-col time-col">12:19</td><td class="schedule-col">대전 신세계 도착</td><td><i class="fas fa-mug-hot"></i> 카페</td><td class="activity-col"><strong>스타벅스 대전엑스포스카이점</strong> (38층)</td></tr>
+                <tr><td class="schedule-col time-col">13:50</td><td class="schedule-col">스타벅스 - 대전역</td><td><i class="fas fa-bus"></i> 버스(606/707번)</td><td>대전역으로 복귀</td></tr>
+                <tr><td class="schedule-col time-col">15:34</td><td class="schedule-col">대전역 - 울산</td><td><i class="fas fa-train"></i> 기차</td><td>울산으로 이동</td></tr>
+                <tr><td class="schedule-col time-col">16:50</td><td class="schedule-col">울산역 - 집</td><td><i class="fas fa-bus"></i> 버스(3000번)</td><td><strong>울산역(시내방면) 탑승 - 신도시 현대 청어람 하차</strong></td></tr>
+                <tr><td class="schedule-col time-col">18:15</td><td class="schedule-col">종료</td><td></td><td>여행 마무리</td></tr>
             </tbody>
         </table>
 
@@ -219,15 +226,15 @@
         </table>
         
         <h2 id="google-map">
-            <a href="https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4Xb6uaQ2RBXL_nk&usp=sharing" target="_blank" style="color: #6DB95A; text-decoration: none;"> 
-                <i class="fas fa-map-marked-alt"></i> 구글 지도 미리보기 "https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4xb6uaQ2RBXL_nk&usp=sharing"
+            <a href="https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4xb6uaQ2RBXL_nk&usp=sharing" target="_blank" style="color: #6DB95A; text-decoration: none;"> 
+                <i class="fas fa-map-marked-alt"></i> 구글 지도 미리보기
             </a>
         </h2>
         <div class="map-container">
             <div class="link-placeholder">
                 <p>
-                    <a href="https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4Xb6uaQ2RBXL_nk&usp=sharing" target="_blank" style="color: #4A7C59; font-weight: bold; text-decoration: underline;">
-                       "https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4xb6uaQ2RBXL_nk&usp=sharing"
+                    <a href="https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4xb6uaQ2RBXL_nk&usp=sharing" target="_blank" style="color: #4A7C59; font-weight: bold; text-decoration: underline;">
+                        구글 지도 (내 지도) 링크로 이동
                     </a>
                 </p>
                 <p style="margin-top: 5px;">
@@ -237,19 +244,19 @@
         </div>
 
         <h2 id="naver-list">
-            <a href="https://naver.me/59UIKof2w" target="_blank" style="color: #6DB95A; text-decoration: none;"> 
-                <i class="fas fa-list-ul"></i> 네이버 지도 리스트 "https://naver.me/59UKof2w"
+            <a href="https://naver.me/59UKof2w" target="_blank" style="color: #6DB95A; text-decoration: none;"> 
+                <i class="fas fa-list-ul"></i> 네이버 지도 리스트
             </a>
         </h2>
         <div class="naver-list-container">
             <div class="link-placeholder">
                 <p>
-                    <a href="https://naver.me/59UIKof2w" target="_blank" style="color: #4A7C59; font-weight: bold; text-decoration: underline;">
+                    <a href="https://naver.me/59UKof2w" target="_blank" style="color: #4A7C59; font-weight: bold; text-decoration: underline;">
                         네이버 리스트 링크로 이동
                     </a>
                 </p>
                 <p style="margin-top: 5px;">
-                   "https://naver.me/59UKof2w"
+                    (클릭하시면 새로운 창에서 리스트 페이지가 열립니다.)
                 </p>
             </div>
         </div>
