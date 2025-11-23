@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 대전 일정</title>
+    <title>2025 대전 여행 계획</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
     <style>
-        /* 기본 스타일 */
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
@@ -15,250 +13,84 @@
             padding: 0;
             background-color: #f4f7f6;
             color: #333;
+            text-align: center;
         }
         .container {
             width: 90%;
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 20px 0;
+            padding: 40px 0;
         }
-        /* 웹사이트 중앙 제목 */
+        .header {
+            background-color: #4A7C59;
+            color: white;
+            padding: 60px 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
         h1 {
-            color: #4A7C59;
-            text-align: center;
-            padding: 20px 0 10px;
-            border-bottom: 3px solid #6DB95A;
+            font-size: 2.5em;
+            margin: 0 0 10px;
         }
-        h2 {
-            color: #6DB95A;
-            border-left: 5px solid #6DB95A;
-            padding-left: 10px;
-            margin-top: 40px;
-            margin-bottom: 15px;
+        .sub-title {
+            font-size: 1.2em;
+            opacity: 0.9;
         }
-        /* H2 내부 링크 스타일 */
-        h2 a {
-            color: #6DB95A !important;
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .nav-item {
+            display: block;
             text-decoration: none;
-            transition: color 0.2s;
-        }
-        h2 a:hover {
-            color: #4A7C59 !important;
-        }
-        h2 i {
-            margin-right: 8px; 
-        }
-
-        /* 내비게이션 바 스타일 (스크롤 시 상단 고정) */
-        .navbar {
-            background-color: #4A7C59;
-            overflow: hidden;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-        .navbar a {
-            display: inline-block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-            font-size: 17px;
-            transition: background-color 0.3s;
-        }
-        .navbar a:hover {
-            background-color: #6DB95A;
-        }
-        .navbar i {
-            margin-right: 5px;
-        }
-
-        /* 일정표 및 옵션표 스타일 */
-        .schedule-table, .option-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            background-color: #fff;
-        }
-        .schedule-table th, .schedule-table td, 
-        .option-table th, .option-table td {
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: left;
-            vertical-align: middle; /* 세로 정렬 추가 */
-        }
-        .schedule-table th, .option-table th {
-            background-color: #4A7C59;
-            color: white;
-            font-weight: bold;
-            text-align: center;
-        }
-        .schedule-table tr:nth-child(even) {
-            background-color: #f8f8f8;
-        }
-        /* 일정 칸 중앙 정렬 */
-        .schedule-col {
-            text-align: center !important;
-        }
-        /* 시간 열 스타일 (원본 이미지의 녹색 배경 복원) */
-        .time-col {
-            background-color: #5cb85c !important; /* 진한 녹색 */
-            color: white !important; /* 흰색 텍스트 */
-            font-weight: bold;
-        }
-        /* 굵은 검정색 강조 */
-        strong {
             color: #333;
-            font-weight: bold;
+            background-color: white;
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
-        .activity-col {
-            font-style: normal;
+        .nav-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            background-color: #f0f0f0;
         }
-        /* 지도 컨테이너 스타일 */
-        .map-container, .naver-list-container {
-            width: 100%; 
-            overflow: hidden; 
-            margin-top: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        .nav-item i {
+            font-size: 2em;
+            color: #6DB95A;
+            margin-bottom: 10px;
         }
-        .link-placeholder {
-            text-align: center; 
-            padding: 30px 0; 
-            border: 1px dashed #ccc;
-            background-color: #f8f8f8;
-            border-radius: 4px;
+        .nav-item strong {
+            display: block;
+            font-size: 1.1em;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>2025 대전 일정</h1>
-
-        <div class="navbar">
-            <a href="schedule.html"><i class="fas fa-clipboard-list"></i> 일정</a>
-            <a href="options.html"><i class="fas fa-utensils"></i> 후보</a>
-            <a href="google_map.html"><i class="fas fa-map-marked-alt"></i> 구글 지도</a>
-            <a href="naver_list.html"><i class="fas fa-list-ul"></i> 네이버 리스트</a>
+        <div class="header">
+            <h1>2025 대전 여행 계획</h1>
+            <p class="sub-title">12월 23일 상세 일정 및 정보</p>
         </div>
 
-        <h2 id="schedule"><i class="fas fa-clipboard-list"></i> 당일치기 상세 일정</h2>
-        <table class="schedule-table">
-            <thead>
-                <tr>
-                    <th style="width: 10%;">시간</th> <th style="width: 25%;">일정</th>
-                    <th style="width: 15%;">교통수단</th>
-                    <th style="width: 50%;">비고</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td class="schedule-col time-col">06:00</td><td class="schedule-col">집 - 물금역</td><td><i class="fas fa-taxi"></i> 택시</td><td>여정 시작</td></tr>
-                <tr><td class="schedule-col time-col">06:30</td><td class="schedule-col">물금역 - 대전역</td><td><i class="fas fa-train"></i> 기차</td><td>대전으로 이동</td></tr>
-                <tr><td class="schedule-col time-col">08:26</td><td class="schedule-col">대전역 - 중앙로역</td><td><i class="fas fa-subway"></i> 지하철</td><td>빠른 하차 4-2</td></tr>
-                <tr><td class="schedule-col time-col">08:31</td><td class="schedule-col">중앙로역 - 성심당</td><td><i class="fas fa-walking"></i> 도보</td><td class="activity-col"><strong>성심당 본점/샌드위치 정거장 방문</strong></td></tr>
-                <tr><td class="schedule-col time-col">09:30</td><td class="schedule-col">선화동 소머리 해장국</td><td><i class="fas fa-utensils"></i> 식사</td><td>아침 식사</td></tr>
-                <tr><td class="schedule-col time-col">10:00</td><td class="schedule-col">선화동 - 한밭수목원</td><td><i class="fas fa-bus"></i><i class="fas fa-walking" style="margin-left: 5px;"></i></td><td>(하차 후 도보 약 23분)</td></tr>
-                <tr><td class="schedule-col time-col">12:19</td><td class="schedule-col">대전 신세계 도착</td><td><i class="fas fa-mug-hot"></i> 카페</td><td class="activity-col"><strong>스타벅스 대전엑스포스카이점</strong> (38층)</td></tr>
-                <tr><td class="schedule-col time-col">13:50</td><td class="schedule-col">스타벅스 - 대전역</td><td><i class="fas fa-bus"></i> 버스(606/707번)</td><td>대전역으로 복귀</td></tr>
-                <tr><td class="schedule-col time-col">15:34</td><td class="schedule-col">대전역 - 울산</td><td><i class="fas fa-train"></i> 기차</td><td>울산으로 이동</td></tr>
-                <tr><td class="schedule-col time-col">16:50</td><td class="schedule-col">울산역 - 집</td><td><i class="fas fa-bus"></i> 버스(3000번)</td><td><strong>울산역(시내방면) 탑승 - 신도시 현대 청어람 하차</strong></td></tr>
-                <tr><td class="schedule-col time-col">18:15</td><td class="schedule-col">종료</td><td></td><td>여행 마무리</td></tr>
-            </tbody>
-        </table>
-
-        <h2 id="options"><i class="fas fa-utensils"></i> 식사, 카페 및 관광지 후보 목록</h2>
-
-        <h3><i class="fas fa-utensils"></i> 식사 옵션</h3>
-        <table class="option-table">
-            <thead>
-                <tr>
-                    <th style="width: 15%;">분류</th>
-                    <th style="width: 35%;">상호명</th>
-                    <th style="width: 30%;">비고</th>
-                    <th style="width: 20%;">오픈 시간</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>1</strong> (국밥)</td><td><strong>선화동 소머리 해장국</strong></td><td>정기휴무 월요일</td><td>오전 7:00</td></tr>
-                <tr><td>2 (두부)</td><td>광천식당</td><td></td><td>오전 10:30</td></tr>
-                <tr><td>3 (자유식)</td><td>대전 신세계 내부 식당</td><td></td><td>오전 11:00 (가격 변동)</td></tr>
-            </tbody>
-        </table>
-
-        <h3><i class="fas fa-coffee"></i> 카페/디저트 옵션</h3>
-        <table class="option-table">
-            <thead>
-                <tr>
-                    <th style="width: 40%;">상호명</th>
-                    <th style="width: 30%;">비고</th>
-                    <th style="width: 30%;">오픈 시간</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>스타벅스 대전엑스포스카이점</strong></td><td>38층</td><td>오전 8:00</td></tr>
-                <tr><td>성심당 문화원</td><td></td><td>오전 8:00</td></tr>
-                <tr><td>젤리포에</td><td></td><td>오전 11:00</td></tr>
-            </tbody>
-        </table>
-
-        <h3><i class="fas fa-leaf"></i> 관광지 및 액티비티 옵션</h3>
-        <table class="option-table">
-            <thead>
-                <tr>
-                    <th style="width: 20%;">분류</th>
-                    <th style="width: 40%;">상호명</th>
-                    <th style="width: 25%;">비고</th>
-                    <th style="width: 15%;">오픈 시간</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>1</strong> (수목원)</td><td><strong>한밭 수목원</strong></td><td>화요일 서원 휴무</td><td>오전 5:00</td></tr>
-                <tr><td>2 (전시관)</td><td>대전근현대사전시관</td><td>정기휴무 월요일</td><td>오전 10:00</td></tr>
-                <tr><td>3 (엑스포)</td><td>엑스포 과학공원</td><td></td><td>운영시간 변동</td></tr>
-                <tr><td>4 (소품샵)</td><td>마중</td><td></td><td>오전 11:30</td></tr>
-            </tbody>
-        </table>
-        
-        <h2 id="google-map">
-            <a href="https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4xb6uaQ2RBXL_nk&usp=sharing" target="_blank" style="color: #6DB95A; text-decoration: none;"> 
-                <i class="fas fa-map-marked-alt"></i> 구글 지도 미리보기
+        <div class="nav-grid">
+            <a href="schedule.html" class="nav-item">
+                <i class="fas fa-calendar-alt"></i>
+                <strong>1. 12월 23일 상세 일정</strong>
+                <p style="font-size: 0.9em; margin: 5px 0 0;">확정된 시간표를 확인하세요.</p>
             </a>
-        </h2>
-        <div class="map-container">
-            <div class="link-placeholder">
-                <p>
-                    <a href="https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4xb6uaQ2RBXL_nk&usp=sharing" target="_blank" style="color: #4A7C59; font-weight: bold; text-decoration: underline;">
-                        구글 지도 (내 지도) 링크로 이동
-                    </a>
-                </p>
-                <p style="margin-top: 5px;">
-                    (클릭하시면 새로운 창에서 지도 페이지가 열립니다.)
-                </p>
-            </div>
-        </div>
-
-        <h2 id="naver-list">
-            <a href="https://naver.me/59UKof2w" target="_blank" style="color: #6DB95A; text-decoration: none;"> 
-                <i class="fas fa-list-ul"></i> 네이버 지도 리스트
+            <a href="options.html" class="nav-item">
+                <i class="fas fa-utensils"></i>
+                <strong>2. 식사/관광 후보 목록</strong>
+                <p style="font-size: 0.9em; margin: 5px 0 0;">선택 가능한 후보지를 확인하세요.</p>
             </a>
-        </h2>
-        <div class="naver-list-container">
-            <div class="link-placeholder">
-                <p>
-                    <a href="https://naver.me/59UKof2w" target="_blank" style="color: #4A7C59; font-weight: bold; text-decoration: underline;">
-                        네이버 리스트 링크로 이동
-                    </a>
-                </p>
-                <p style="margin-top: 5px;">
-                    (클릭하시면 새로운 창에서 리스트 페이지가 열립니다.)
-                </p>
-            </div>
+            <a href="maps.html" class="nav-item">
+                <i class="fas fa-map-marked-alt"></i>
+                <strong>3. 지도 및 경로 (네이버/구글)</strong>
+                <p style="font-size: 0.9em; margin: 5px 0 0;">경로와 리스트를 확인하세요.</p>
+            </a>
         </div>
     </div>
 </body>
