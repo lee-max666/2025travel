@@ -42,13 +42,13 @@
             /* 첫 번째 항목 (메인)은 100% 너비를 차지하여 단독으로 한 줄에 배치 */
             .navbar a:first-child { 
                 flex: 0 0 100%;
-                max-width: fit-content; /* 너비를 내용에 맞게 축소 */
-                margin: 0 auto 5px auto; /* 중앙 정렬 및 아래쪽 여백 */
+                max-width: fit-content; 
+                margin: 0 auto 5px auto; 
                 padding: 10px 20px;
                 box-sizing: border-box;
             }
             /* 나머지 3개 항목은 다음 줄에서 1/3씩 균등하게 배치 */
-            .navbar a:nth-child(n+2) { /* 2번째 항목부터 */
+            .navbar a:nth-child(n+2) { 
                 flex: 1 1 calc(33.33% - 10px); 
                 max-width: calc(33.33% - 10px);
                 margin: 5px; 
@@ -71,62 +71,51 @@
             margin-bottom: 20px;
         }
 
-        /* Schedule Table */
+        /* ---------------------------------------------------- */
+        /* ✨ 일정표 스타일 수정 및 모바일 스크롤 기능 추가 */
+        /* ---------------------------------------------------- */
+        /* 테이블을 감싸서 스크롤 가능하게 만드는 컨테이너 */
+        .table-responsive {
+            overflow-x: auto; /* 가로 스크롤 가능하게 설정 */
+            -webkit-overflow-scrolling: touch; /* iOS 스크롤 개선 */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 그림자 유지 */
+            background-color: #fff; /* 배경색 유지 */
+            border-radius: 8px; /* 둥근 모서리 유지 */
+        }
+        
         .schedule-table { 
             width: 100%; 
+            min-width: 600px; /* 모바일에서 최소 너비 설정 (스크롤 유도) */
             border-collapse: collapse; 
-            overflow: hidden; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            background-color: #fff;
-            border-radius: 8px;
+            /* box-shadow와 background-color는 table-responsive로 이동 */
         }
         .schedule-table thead th {
             background-color: #4A7C59; 
             color: white; 
-            padding: 12px 15px; 
-            text-align: left;
+            padding: 12px 10px; 
+            text-align: center; /* ✨ 중앙 정렬 적용 */
+            border: none; /* 칸 구분 최소화 */
         }
         .schedule-table tbody tr { 
-            border-bottom: 1px solid #ddd; 
+            /* border-bottom: 1px solid #ddd;  칸 구분 최소화를 위해 점선 대신 옅은 선으로 변경*/
             transition: background-color 0.2s;
         }
-        .schedule-table tbody tr:hover { background-color: #f9f9f9; }
+        .schedule-table tbody tr:hover { background-color: #f0f7ef; }
         .schedule-table tbody td { 
-            padding: 12px 15px; 
+            padding: 12px 10px; 
             vertical-align: top;
             font-size: 0.95em;
+            text-align: center; /* ✨ 중앙 정렬 적용 */
+            border: 1px solid #eee; /* ✨ 칸 구분 최소화: 옅은 테두리 */
         }
         .schedule-table tbody tr:nth-child(even) { background-color: #f7fff6; }
         
-        /* Mobile View (Accordion Style) */
+        /* 모바일 뷰: 가로 스크롤 기능이 추가되었으므로 아코디언 스타일은 제거 */
         @media (max-width: 600px) {
             .schedule-table { 
-                border: none;
-                box-shadow: none; 
+                /* min-width가 스크롤을 담당합니다. */
             }
-            .schedule-table thead { display: none; }
-            .schedule-table tbody, .schedule-table tr, .schedule-table td { 
-                display: block; 
-                width: 100%;
-            }
-            .schedule-table tr { 
-                margin-bottom: 20px; 
-                border: 1px solid #ccc; 
-                border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            }
-            .schedule-table td { 
-                text-align: right; 
-                padding: 10px 15px;
-                position: relative;
-            }
-            .schedule-table td::before {
-                content: attr(data-label);
-                position: absolute;
-                left: 15px;
-                font-weight: bold;
-                color: #4A7C59;
-            }
+            /* 모바일에서 아코디언 형태로 바꾸는 CSS는 가로 스크롤을 위해 제거합니다. */
         }
 
         /* Back Link Style */
@@ -155,41 +144,41 @@
 
         <div class="day-section">
             <h3><i class="fas fa-cog"></i> 1일차</h3>
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>시간</th>
-                        <th>경로</th>
-                        <th>일정/목적지</th>
-                        <th>비용</th>
-                        <th>비고</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td data-label="시간">06:00</td><td data-label="경로">집 - 물금역</td><td data-label="일정/목적지"></td><td data-label="비용">₩10,000</td><td data-label="비고">택시 15분 소요</td></tr>
-                    <tr><td data-label="시간">06:15</td><td data-label="경로"></td><td data-label="일정/목적지">물금역 도착</td><td data-label="비용"></td><td data-label="비고"></td></tr>
-                    <tr><td data-label="시간">06:30</td><td data-label="경로">물금역 - 대전역</td><td data-label="일정/목적지"></td><td data-label="비용">₩28,100</td><td data-label="비고">기차1시간 44분 소요</td></tr>
-                    <tr><td data-label="시간">08:19</td><td data-label="경로"></td><td data-label="일정/목적지">대전역 도착 (4번 출구)</td><td data-label="비용"></td><td data-label="비고"></td></tr>
-                    <tr><td data-label="시간">08:26</td><td data-label="경로">대전역 - 중앙로역 (빠른하차 4-2)</td><td data-label="일정/목적지"></td><td data-label="비용">₩1,550</td><td data-label="비고">지하철</td></tr>
-                    <tr><td data-label="시간">08:31</td><td data-label="경로">중앙로역 - 성심당 본점</td><td data-label="일정/목적지"></td><td data-label="비용"></td><td data-label="비고">도보 3분</td></tr>
-                    <tr><td data-label="시간"></td><td data-label="경로"></td><td data-label="일정/목적지">성심당 본점 또는 샌드위치 정거장 방문</td><td data-label="비용"></td><td data-label="비고">개인 가방,지하철, 트래블 라운지 보관</td></tr>
-                    <tr><td data-label="시간">09:15</td><td data-label="경로">성심당 - 선화동</td><td data-label="일정/목적지"></td><td data-label="비용"></td><td data-label="비고">도보 14분</td></tr>
-                    <tr><td data-label="시간">09:30</td><td data-label="경로"></td><td data-label="일정/목적지">선화동 소머리 해장국</td><td data-label="비용">₩10,000</td><td data-label="비고"></td></tr>
-                    <tr><td data-label="시간">10:00</td><td data-label="경로">선화동 - 한밭수목원</td><td data-label="일정/목적지"></td><td data-label="비용">₩1,500</td><td data-label="비고">버스 45분 소요(하차후 도보23분) 108번 탑승 국립 농산 물품 관리원-사학 연금회관</td></tr>
-                    <tr><td data-label="시간">10:51</td><td data-label="경로"></td><td data-label="일정/목적지">한밭 수목원 도착</td><td data-label="비용"></td><td data-label="비고"></td></tr>
-                    <tr><td data-label="시간">12:00</td><td data-label="경로">한밭 수목원 - 대전 신세계</td><td data-label="일정/목적지"></td><td data-label="비용">₩1,500</td><td data-label="비고">버스 16분 소요(도보 8분) 911번 탑승</td></tr>
-                    <tr><td data-label="시간">12:19</td><td data-label="경로"></td><td data-label="일정/목적지">대전 신세계 도착</td><td data-label="비용"></td><td data-label="비고"></td></tr>
-                    <tr><td data-label="시간"></td><td data-label="경로"></td><td data-label="일정/목적지">스타벅스 대전엑스포스카이점</td><td data-label="비용"></td><td data-label="비고">최소 1시50분까지는 버스 탑승</td></tr>
-                    <tr><td data-label="시간">13:50</td><td data-label="경로">스타벅스 - 대전역</td><td data-label="일정/목적지"></td><td data-label="비용">₩1,500</td><td data-label="비고">버스 44분~1시간 소요 606번, 707번 탑승</td></tr>
-                    <tr><td data-label="시간">14:54</td><td data-label="경로"></td><td data-label="일정/목적지">대전역 도착</td><td data data-label="비용"></td><td data-label="비고"></td></tr>
-                    <tr><td data-label="시간">15:34</td><td data-label="경로">대전역 - 울산(통도사)</td><td data-label="일정/목적지"></td><td data-label="비용">₩30,100</td><td data-label="비고">기차 1시간 15분 소요</td></tr>
-                    <tr><td data-label="시간">16:49</td><td data-label="경로"></td><td data-label="일정/목적지">울산역 도착</td><td data-label="비용"></td><td data-label="비고">3번 출구 오른쪽 방향 버스 1시간 소요 3000번 버스 탑승</td></tr>
-                    <tr><td data-label="시간">16:50</td><td data-label="경로">울산역 - 집</td><td data-label="일정/목적지"></td><td data-label="비용">₩3,500</td><td data-label="비고">울산역(시내방면)-신도시 현대 청어람 하차</td></tr>
-                    <tr><td data-label="시간">18:15</td><td data-label="경로"></td><td data-label="일정/목적지">끝</td><td data-label="비용"></td><td data-label="비고"></td></tr>
-                    <tr><td data-label="시간"></td><td data-label="경로"></td><td data-label="일정/목적지">대전 여행 지도</td><td data-label="비용"></td><td data-label="비고"></td></tr>
-                </tbody>
-            </table>
-        </div>
+            <div class="table-responsive"> <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>시간</th>
+                            <th>경로</th>
+                            <th>일정/목적지</th>
+                            <th>비용</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>06:00</td><td>집 - 물금역</td><td></td><td>₩10,000</td><td>택시 15분 소요</td></tr>
+                        <tr><td>06:15</td><td></td><td>물금역 도착</td><td></td><td></td></tr>
+                        <tr><td>06:30</td><td>물금역 - 대전역</td><td></td><td>₩28,100</td><td>기차1시간 44분 소요</td></tr>
+                        <tr><td>08:19</td><td></td><td>대전역 도착 (4번 출구)</td><td></td><td></td></tr>
+                        <tr><td>08:26</td><td>대전역 - 중앙로역 (빠른하차 4-2)</td><td></td><td>₩1,550</td><td>지하철</td></tr>
+                        <tr><td>08:31</td><td>중앙로역 - 성심당 본점</td><td></td><td></td><td>도보 3분</td></tr>
+                        <tr><td></td><td></td><td>성심당 본점 또는 샌드위치 정거장 방문</td><td></td><td>개인 가방,지하철, 트래블 라운지 보관</td></tr>
+                        <tr><td>09:15</td><td>성심당 - 선화동</td><td></td><td></td><td>도보 14분</td></tr>
+                        <tr><td>09:30</td><td></td><td>선화동 소머리 해장국</td><td>₩10,000</td><td></td></tr>
+                        <tr><td>10:00</td><td>선화동 - 한밭수목원</td><td></td><td>₩1,500</td><td>버스 45분 소요(하차후 도보23분) 108번 탑승 국립 농산 물품 관리원-사학 연금회관</td></tr>
+                        <tr><td>10:51</td><td></td><td>한밭 수목원 도착</td><td></td><td></td></tr>
+                        <tr><td>12:00</td><td>한밭 수목원 - 대전 신세계</td><td></td><td>₩1,500</td><td>버스 16분 소요(도보 8분) 911번 탑승</td></tr>
+                        <tr><td>12:19</td><td></td><td>대전 신세계 도착</td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td>스타벅스 대전엑스포스카이점</td><td></td><td>최소 1시50분까지는 버스 탑승</td></tr>
+                        <tr><td>13:50</td><td>스타벅스 - 대전역</td><td></td><td>₩1,500</td><td>버스 44분~1시간 소요 606번, 707번 탑승</td></tr>
+                        <tr><td>14:54</td><td></td><td>대전역 도착</td><td></td><td></td></tr>
+                        <tr><td>15:34</td><td>대전역 - 울산(통도사)</td><td></td><td>₩30,100</td><td>기차 1시간 15분 소요</td></tr>
+                        <tr><td>16:49</td><td></td><td>울산역 도착</td><td></td><td>3번 출구 오른쪽 방향 버스 1시간 소요 3000번 버스 탑승</td></tr>
+                        <tr><td>16:50</td><td>울산역 - 집</td><td></td><td>₩3,500</td><td>울산역(시내방면)-신도시 현대 청어람 하차</td></tr>
+                        <tr><td>18:15</td><td></td><td>끝</td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td>대전 여행 지도</td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div> </div>
         
         <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> 메인 페이지로 돌아가기</a>
     </div>
