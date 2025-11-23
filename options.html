@@ -7,10 +7,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
-        .container { width: 90%; max-width: 1000px; margin: 0 auto; padding: 20px 0; }
-        /* ... (Navbar, Container, H2/H3 스타일은 생략) ... */
         
-        /* 💡 PC와 모바일 동일 레이아웃을 위한 Wrapper (가로 스크롤 허용) */
+        /* 고정 네비게이션 스타일 */
+        .navbar {
+            background-color: #4A7C59;
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .navbar a { display: inline-block; color: white; text-align: center; padding: 14px 20px; text-decoration: none; font-size: 17px; transition: background-color 0.3s; }
+        .navbar a:hover { background-color: #6DB95A; }
+        .navbar a.active { background-color: #6DB95A; font-weight: bold; }
+        .navbar i { margin-right: 5px; }
+
+        .container { width: 90%; max-width: 1000px; margin: 0 auto; padding: 20px 0; }
+        h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
+        h3 { color: #6DB95A; border-left: 5px solid #6DB95A; padding-left: 10px; margin-top: 40px; margin-bottom: 15px; }
+
+        /* PC와 모바일 동일 레이아웃을 위한 Wrapper (가로 스크롤 허용) */
         .table-wrapper {
             overflow-x: auto; 
             margin-bottom: 30px;
@@ -20,23 +37,29 @@
 
         .option-table { 
             width: 100%; 
-            min-width: 600px; /* 표의 최소 너비를 설정하여 PC 레이아웃 유지 */
+            min-width: 700px; /* 표의 최소 너비를 확보 */
             border-collapse: collapse; 
         }
         .option-table th, .option-table td { 
             padding: 12px; 
             border: 1px solid #ddd; 
             text-align: left; 
-            /* ⚠️ 텍스트가 셀 안에서 자연스럽게 줄바꿈되도록 허용 */
-            white-space: normal; 
+            white-space: normal; /* 텍스트 줄바꿈 허용 */
             word-break: break-word;
         }
         .option-table th { background-color: #4A7C59; color: white; font-weight: bold; text-align: center; }
         .option-table tr:nth-child(even) { background-color: #f8f8f8; }
         strong { color: #333; font-weight: bold; }
         
-        /* 하단 링크 스타일 */
-        .back-link { display: block; text-align: center; margin-top: 30px; font-size: 1.1em; color: #6DB95A; text-decoration: none; }
+        /* 하단 링크 스타일: 중앙 정렬 */
+        .back-link { 
+            display: block; 
+            text-align: center; 
+            margin-top: 30px; 
+            font-size: 1.1em; 
+            color: #6DB95A; 
+            text-decoration: none; 
+        }
         .back-link:hover { text-decoration: underline; }
     </style>
 </head>
@@ -57,15 +80,16 @@
                 <thead>
                     <tr>
                         <th style="width: 15%;">분류</th>
-                        <th style="width: 35%;">상호명</th>
-                        <th style="width: 30%;">비고</th>
+                        <th style="width: 25%;">상호명</th>
+                        <th style="width: 15%;">가격</th>
+                        <th style="width: 25%;">비고</th>
                         <th style="width: 20%;">오픈 시간</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>국밥</td><td><strong>선화동 소머리 해장국</strong></td><td>정기휴무 월요일</td><td>오전 7:00</td></tr>
-                    <tr><td>두부</td><td>광천식당</td><td></td><td>오전 10:30</td></tr>
-                    <tr><td>자유식</td><td>대전 신세계 내부 식당</td><td></td><td>오전 11:00</td></tr>
+                    <tr><td>국밥</td><td><strong>선화동 소머리 해장국</strong></td><td>₩10,000</td><td>정기휴무 월요일</td><td>오전 7:00</td></tr>
+                    <tr><td>두부</td><td>광천식당</td><td>₩16,000</td><td></td><td>오전 10:30</td></tr>
+                    <tr><td>자유식</td><td>대전 신세계 내부 식당</td><td></td><td></td><td>오전 11:00</td></tr>
                 </tbody>
             </table>
         </div>
@@ -75,15 +99,16 @@
             <table class="option-table">
                 <thead>
                     <tr>
-                        <th style="width: 40%;">상호명</th>
+                        <th style="width: 30%;">상호명</th>
+                        <th style="width: 20%;">가격</th>
                         <th style="width: 30%;">비고</th>
-                        <th style="width: 30%;">오픈 시간</th>
+                        <th style="width: 20%;">오픈 시간</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><strong>스타벅스 대전엑스포스카이점</strong></td><td>38층</td><td>오전 8:00</td></tr>
-                    <tr><td>성심당 문화원</td><td></td><td>오전 8:00</td></tr>
-                    <tr><td>젤리포에</td><td></td><td>오전 11:00</td></tr>
+                    <tr><td><strong>스타벅스 대전엑스포스카이점</strong></td><td>₩6,900</td><td>38층</td><td>오전 8:00</td></tr>
+                    <tr><td>성심당 문화원</td><td>₩6,000</td><td></td><td>오전 8:00</td></tr>
+                    <tr><td>젤리포에</td><td>₩6,400</td><td></td><td>오전 11:00</td></tr>
                 </tbody>
             </table>
         </div>
@@ -102,7 +127,7 @@
                 <tbody>
                     <tr><td>수목원</td><td><strong>한밭 수목원</strong></td><td>화요일 서원 휴무</td><td>오전 5:00</td></tr>
                     <tr><td>전시관</td><td>대전근현대사전시관</td><td>정기휴무 월요일</td><td>오전 10:00</td></tr>
-                    <tr><td>엑스포</td><td>엑스포 과학공원</td><td></td><td>운영시간 변동</td></tr>
+                    <tr><td>엑스포</td><td>엑스포 과학공원</td><td>운영시간 변동</td><td></td></tr>
                     <tr><td>소품샵</td><td>마중</td><td></td><td>오전 11:30</td></tr>
                 </tbody>
             </table>
