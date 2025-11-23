@@ -33,7 +33,7 @@
         .navbar i { margin-right: 5px; }
 
         /* ---------------------------------------------------------------------------------- */
-        /* ✨ 모바일 네비게이션 배치 (4개 항목 모두 1행씩 분리) - 주인님의 원본 요청으로 복구 */
+        /* ✨ 모바일 네비게이션 배치 (4개 항목 모두 1행씩 분리) - 원본 요청으로 복구 */
         @media (max-width: 768px) {
             .navbar {
                 display: flex;
@@ -56,31 +56,7 @@
         
         /* 여기에 index.html 고유의 스타일이 들어갈 것이오. */
         .main-content { text-align: center; padding: 50px 0; }
-        .main-content h1 { color: #4A7C59; font-size: 2.5em; margin-bottom: 20px; }
-        .main-content p { color: #666; font-size: 1.2em; }
-        .video-grid {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        .video-item {
-            width: 30%;
-            min-width: 200px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .video-placeholder {
-            height: 120px;
-            background-color: #e0e0e0;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-            font-size: 14px;
-            color: #777;
-        }
+        
     </style>
 </head>
 <body>
@@ -92,25 +68,10 @@
     </div>
 
     <div class="container">
-        <h2><i class="fas fa-desktop"></i> 주인님의 개인 페이지</h2>
+        <h2><i class="fas fa-star"></i> 메인 화면</h2>
         <div class="main-content">
-            <p>이곳이 주인님께서 원하신 Mac/iPhone 스타일의 페이지이오. 아래에 유튜브 영상 3개가 표시되어야 하오.</p>
-            
-            <div class="video-grid">
-                <div class="video-item">
-                    <div class="video-placeholder"><i class="fab fa-youtube"></i> YouTube Video 1</div>
-                    <small>영상 제목 1</small>
-                </div>
-                <div class="video-item">
-                    <div class="video-placeholder"><i class="fab fa-youtube"></i> YouTube Video 2</div>
-                    <small>영상 제목 2</small>
-                </div>
-                <div class="video-item">
-                    <div class="video-placeholder"><i class="fab fa-youtube"></i> YouTube Video 3</div>
-                    <small>영상 제목 3</small>
-                </div>
-            </div>
-            
+            <p>메인 화면의 **아이콘 3개** 및 **유튜브 영상**이 들어갈 영역이오.</p>
+            <p style="color: red; margin-top: 20px;">이곳에 주인님께서 원하시는 **Mac/iPhone 스타일의 콘텐츠**가 들어가야 하오.</p>
         </div>
     </div>
 </body>
