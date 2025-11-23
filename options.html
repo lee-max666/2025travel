@@ -32,39 +32,29 @@
         .navbar a.active { background-color: #6DB95A; font-weight: bold; }
         .navbar i { margin-right: 5px; }
 
-        /* 모바일 네비게이션 배치 (두 줄로) */
-        @media (max-width: 768px) { /* 모바일 화면 크기 기준 */
+        /* ✨ 모바일 네비게이션 배치 (1개/3개 분할) */
+        @media (max-width: 768px) {
             .navbar {
                 display: flex;
                 flex-wrap: wrap; 
-                justify-content: space-evenly; 
-                padding: 5px 0; 
-            }
-            .navbar a {
-                flex: 1 1 auto;
-                min-width: 80px; 
-                padding: 10px 5px; 
-                font-size: 15px; 
-            }
-            .navbar a:first-child { 
-                width: 100%; 
-                flex: none; 
-                max-width: fit-content; 
-                margin: 0 auto; 
-            }
-            .navbar a:not(:first-child) { 
-                width: calc(33.33% - 10px); 
-                margin: 5px; 
-            }
-            /* '일정'이 첫 번째 자식인 경우 (다른 페이지)에 대한 미디어 쿼리 */
-            body:not(.main-page) .navbar a {
-                 width: calc(25% - 10px); 
-                 max-width: 100px;
-                 margin: 5px;
-            }
-            body:not(.main-page) .navbar {
-                justify-content: space-evenly; 
                 padding: 5px 0;
+            }
+            /* 첫 번째 항목 (메인)은 100% 너비를 차지하여 단독으로 한 줄에 배치 */
+            .navbar a:first-child { 
+                flex: 0 0 100%;
+                max-width: fit-content; /* 너비를 내용에 맞게 축소 */
+                margin: 0 auto 5px auto; /* 중앙 정렬 및 아래쪽 여백 */
+                padding: 10px 20px;
+                box-sizing: border-box;
+            }
+            /* 나머지 3개 항목은 다음 줄에서 1/3씩 균등하게 배치 */
+            .navbar a:nth-child(n+2) { /* 2번째 항목부터 */
+                flex: 1 1 calc(33.33% - 10px); 
+                max-width: calc(33.33% - 10px);
+                margin: 5px; 
+                padding: 10px 5px;
+                font-size: 15px; 
+                box-sizing: border-box;
             }
         }
 
