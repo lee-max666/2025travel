@@ -33,29 +33,20 @@
         .navbar i { margin-right: 5px; }
 
         /* ---------------------------------------------------------------------------------- */
-        /* ✨ 모바일 네비게이션 배치 (메인 1행, 나머지 3개 2행) - 모든 파일에 동일 적용 */
+        /* ✨ 모바일 네비게이션 배치 (4개 항목 모두 1행씩 분리) - 주인님의 원본 요청으로 복구 */
         @media (max-width: 768px) {
             .navbar {
                 display: flex;
                 flex-wrap: wrap; 
                 padding: 5px 0;
             }
-            /* 메인 항목 (첫 번째 항목) - 1행 전체를 차지하도록 강제 설정 */
-            .navbar a:first-child { 
-                width: 100%; 
-                flex: 0 0 auto; 
-                margin: 0 auto 5px auto; 
+            .navbar a { 
+                width: 100%; /* 모든 항목이 100% 너비를 차지하여 줄바꿈 */
+                flex: 0 0 100%; 
+                margin: 5px 0; 
                 padding: 10px 20px;
                 box-sizing: border-box;
-            }
-            /* 일정, 후보, 지도 및 경로 항목 (나머지 3개) - 2행에 3등분하여 배치 */
-            .navbar a:nth-child(n+2) { 
-                flex: 1 1 calc(33.33% - 10px); 
-                max-width: calc(33.33% - 10px);
-                margin: 5px; 
-                padding: 10px 5px;
                 font-size: 15px; 
-                box-sizing: border-box;
             }
         }
         /* ---------------------------------------------------------------------------------- */
