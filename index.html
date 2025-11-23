@@ -8,7 +8,7 @@
     <style>
         body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
         
-        /* 고정 네비게이션 스타일 */
+        /* 고정 네비게이션 스타일 (PC: 1줄) */
         .navbar {
             background-color: #4A7C59;
             overflow: hidden;
@@ -33,20 +33,30 @@
         .navbar i { margin-right: 5px; }
 
         /* ---------------------------------------------------------------------------------- */
-        /* 모바일 네비게이션 배치 (4개 항목 모두 1행씩 분리) */
+        /* ✨ 모바일 네비게이션 배치 (1행: 메인, 2행: 일정/후보/지도) - 최종 확정 레이아웃 */
         @media (max-width: 768px) {
             .navbar {
                 display: flex;
                 flex-wrap: wrap; 
                 padding: 5px 0;
             }
-            .navbar a { 
+            /* 첫 번째 항목 (메인)은 100% 너비로 1행 차지 */
+            .navbar a:first-child { 
                 width: 100%; 
-                flex: 0 0 100%; 
-                margin: 5px 0; 
+                flex: 0 0 auto; 
+                margin: 0 auto 5px auto; 
                 padding: 10px 20px;
                 box-sizing: border-box;
                 font-size: 15px; 
+            }
+            /* 나머지 3개 항목 (일정, 후보, 지도)는 3등분하여 2행 차지 */
+            .navbar a:nth-child(n+2) { 
+                flex: 1 1 calc(33.33% - 10px); 
+                max-width: calc(33.33% - 10px);
+                margin: 5px; 
+                padding: 10px 5px;
+                font-size: 15px; 
+                box-sizing: border-box;
             }
         }
         /* ---------------------------------------------------------------------------------- */
@@ -62,14 +72,14 @@
             justify-content: space-around;
             flex-wrap: wrap;
             margin-top: 30px;
-            gap: 20px; /* 아이콘 간 간격 */
+            gap: 20px;
         }
         
         .icon-item {
-            width: 30%; /* PC에서 3개씩 */
-            min-width: 120px; /* 모바일에서 최소 너비 확보 */
+            width: 30%;
+            min-width: 120px;
             text-align: center;
-            text-decoration: none; /* 링크 밑줄 제거 */
+            text-decoration: none;
             color: #333;
             transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -81,7 +91,7 @@
 
         .icon-box {
             background-color: #fff;
-            border-radius: 15px; /* Mac/iPhone 스타일 둥근 모서리 */
+            border-radius: 15px;
             padding: 30px 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-bottom: 10px;
@@ -102,11 +112,10 @@
             font-weight: bold;
             font-size: 1.1em;
         }
-
-        /* 모바일에서 아이콘 배치 조정 (예: 2개씩) */
+        
         @media (max-width: 600px) {
             .icon-item {
-                width: 45%; /* 모바일에서 2개씩 표시 */
+                width: 45%; 
                 margin-bottom: 20px;
             }
         }
@@ -135,3 +144,19 @@
 
                 <a href="options.html" class="icon-item">
                     <div class="icon-box">
+                        <i class="fas fa-utensils"></i>
+                        <span class="icon-text">후보</span>
+                    </div>
+                </a>
+
+                <a href="maps.html" class="icon-item">
+                    <div class="icon-box">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span class="icon-text">지도 및 경로</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
