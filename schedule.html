@@ -49,10 +49,13 @@
         .schedule-table th { background-color: #4A7C59; color: white; font-weight: bold; text-align: center; }
         .schedule-table tr:nth-child(even) { background-color: #f8f8f8; }
         .schedule-col { text-align: center !important; }
-        .time-col { background-color: #5cb85c !important; color: white !important; font-weight: bold; }
+        /* 차분한 녹색 적용 */
+        .time-col { background-color: #3A664C !important; color: white !important; font-weight: bold; }
         strong { color: #333; font-weight: bold; }
         .activity-col { font-style: normal; }
-        /* 메인 페이지로 돌아가기 링크 제거 (Navbar 대체) */
+        /* 하단 링크 스타일 */
+        .back-link { display: block; text-align: center; margin-top: 30px; font-size: 1.1em; color: #6DB95A; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -90,6 +93,7 @@
             </tbody>
         </table>
 
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> 메인 페이지로 돌아가기</a>
     </div>
 </body>
 </html>
