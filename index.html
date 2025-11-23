@@ -33,7 +33,7 @@
         .navbar i { margin-right: 5px; }
 
         /* ---------------------------------------------------------------------------------- */
-        /* ✨ 모바일 네비게이션 배치 (1행: 메인, 2행: 일정/후보/지도) - 최종 확정 레이아웃 */
+        /* 모바일 네비게이션 배치 (1행: 메인, 2행: 일정/후보/지도) */
         @media (max-width: 768px) {
             .navbar {
                 display: flex;
@@ -54,7 +54,7 @@
                 flex: 1 1 calc(33.33% - 10px); 
                 max-width: calc(33.33% - 10px);
                 margin: 5px; 
-                padding: 10px 5px;
+                padding: 10px 0;
                 font-size: 15px; 
                 box-sizing: border-box;
             }
@@ -70,14 +70,17 @@
         .icon-grid {
             display: flex;
             justify-content: space-around;
-            flex-wrap: wrap;
+            /* 모바일에서 공간이 부족해도 다음 줄로 넘어가지 않게 방지 */
+            flex-wrap: nowrap; 
             margin-top: 30px;
-            gap: 20px;
+            gap: 10px; /* 간격 줄임 */
+            padding: 0 5px; /* 양쪽 여백 추가 */
         }
         
         .icon-item {
-            width: 30%;
-            min-width: 120px;
+            /* 3개가 무조건 한 줄에 뜨도록 33.33% 지정 및 min-width 제거 */
+            flex: 1 1 30%; 
+            min-width: 30%; /* 이 값을 30%로 고정하여 3개가 한 줄에 들어갈 공간 확보 */
             text-align: center;
             text-decoration: none;
             color: #333;
@@ -92,31 +95,35 @@
         .icon-box {
             background-color: #fff;
             border-radius: 15px;
-            padding: 30px 15px;
+            padding: 20px 10px; /* 패딩을 줄여 모바일 공간 확보 */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-bottom: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 120px;
+            height: 100px; /* 높이도 약간 줄임 */
         }
         
         .icon-box i {
-            font-size: 3em;
+            font-size: 2.5em; /* 아이콘 크기 약간 줄임 */
             color: #4A7C59;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .icon-text {
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1em; /* 텍스트 크기 약간 줄임 */
         }
         
+        /* 모바일 환경에서는 별도 분리하지 않고, 위 flex 속성을 따르게 함 */
         @media (max-width: 600px) {
+            .icon-grid {
+                gap: 5px; 
+            }
             .icon-item {
-                width: 45%; 
-                margin-bottom: 20px;
+                 /* 3개를 한 줄에 유지 */
+                 min-width: 30%;
             }
         }
     </style>
