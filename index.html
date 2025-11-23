@@ -18,19 +18,57 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             text-align: center;
         }
-        /* ⚠️ 공백을 추가하여 간격 확보 */
         .navbar a { 
             display: inline-block; 
             color: white; 
             text-align: center; 
-            padding: 14px 15px; /* 양 옆 패딩을 조금 줄여서 공간 확보 */
+            padding: 14px 15px;
             text-decoration: none; 
             font-size: 17px; 
             transition: background-color 0.3s;
+            white-space: nowrap; /* 글자가 잘리지 않도록 유지 */
         }
         .navbar a:hover { background-color: #6DB95A; }
         .navbar a.active { background-color: #6DB95A; font-weight: bold; }
         .navbar i { margin-right: 5px; }
+
+        /* 모바일 네비게이션 배치 (두 줄로) */
+        @media (max-width: 768px) { /* 모바일 화면 크기 기준 */
+            .navbar {
+                display: flex;
+                flex-wrap: wrap; /* 항목들이 다음 줄로 넘어가도록 설정 */
+                justify-content: center; /* 중앙 정렬 */
+                padding: 5px 0; /* 상하 패딩 추가 */
+            }
+            .navbar a {
+                flex: 1 1 auto; /* 유연하게 공간 차지 */
+                min-width: 80px; /* 너무 작아지지 않도록 최소 너비 설정 */
+                padding: 10px 5px; /* 모바일 패딩 조정 */
+                font-size: 15px; /* 모바일 폰트 크기 조정 */
+            }
+            .navbar a:first-child { /* '메인' 항목 */
+                width: 100%; /* 메인만 한 줄에 차지 */
+                flex: none; /* 유연성 제거 */
+                max-width: fit-content; /* 내용에 맞춰 너비 조정 */
+                margin: 0 auto; /* 중앙 정렬 */
+            }
+            .navbar a:not(:first-child) { /* 메인 외 다른 항목들 */
+                width: calc(33.33% - 10px); /* 3개 항목이 다음 줄에 배치되도록 */
+                margin: 5px; /* 항목 간 간격 */
+            }
+            /* '일정'이 첫 번째 자식인 경우 (다른 페이지)에 대한 미디어 쿼리 */
+            /* schedule, options, maps 페이지에서는 모든 항목이 한 줄에 3개씩 또는 2개 + 2개 등으로 분할되도록 */
+            body:not(.main-page) .navbar a {
+                 width: calc(25% - 10px); /* 4개 항목이 다음 줄에 배치되도록 */
+                 max-width: 100px;
+                 margin: 5px;
+            }
+            body:not(.main-page) .navbar {
+                justify-content: space-evenly; /* 공간을 균등하게 분배 */
+                padding: 5px 0;
+            }
+        }
+
 
         .container { width: 90%; max-width: 800px; margin: 0 auto; padding: 20px 0; text-align: center; }
         h1 { color: #4A7C59; margin-bottom: 20px; font-size: 2.2em; }
@@ -74,8 +112,7 @@
         }
     </style>
 </head>
-<body>
-    <div class="navbar">
+<body class="main-page"> <div class="navbar">
         <a href="index.html" class="active"><i class="fas fa-home"></i> 메인</a> 
         <a href="schedule.html"><i class="fas fa-calendar-alt"></i> 일정</a> 
         <a href="options.html"><i class="fas fa-utensils"></i> 후보</a> 
@@ -83,8 +120,7 @@
     </div>
 
     <div class="container">
-        <h1><i class="fas fa-plane-departure"></i> 2025 대전 여행 계획</h1>
-        <p>여행 일정, 식사 및 관광지 후보, 지도 정보를 한 눈에 확인하세요.</p>
+        <h1><i class="fas fa-train-subway"></i> 2025 대전 여행 계획</h1> <p>여행 일정, 식사 및 관광지 후보, 지도 정보를 한 눈에 확인하세요.</p>
         
         <div class="card-container">
             <a href="schedule.html" class="card">
