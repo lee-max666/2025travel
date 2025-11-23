@@ -32,23 +32,24 @@
         .navbar a.active { background-color: #6DB95A; font-weight: bold; }
         .navbar i { margin-right: 5px; }
 
-        /* ✨ 모바일 네비게이션 배치 (1개/3개 분할) */
+        /* ---------------------------------------------------------------------------------- */
+        /* ✨ 모바일 네비게이션 배치 (메인 1행, 나머지 3개 2행) - 모든 파일에 동일 적용 */
         @media (max-width: 768px) {
             .navbar {
                 display: flex;
                 flex-wrap: wrap; 
                 padding: 5px 0;
             }
-            /* 첫 번째 항목 (메인)은 100% 너비를 차지하여 단독으로 한 줄에 배치 */
+            /* 메인 항목 (첫 번째 항목) - 1행 전체를 차지하도록 강제 설정 */
             .navbar a:first-child { 
-                flex: 0 0 100%;
-                max-width: fit-content; /* 너비를 내용에 맞게 축소 */
-                margin: 0 auto 5px auto; /* 중앙 정렬 및 아래쪽 여백 */
+                width: 100%; /* 너비를 100%로 설정하여 확실히 줄바꿈 */
+                flex: 0 0 auto; /* 유연성 제거 */
+                margin: 0 auto 5px auto; 
                 padding: 10px 20px;
                 box-sizing: border-box;
             }
-            /* 나머지 3개 항목은 다음 줄에서 1/3씩 균등하게 배치 */
-            .navbar a:nth-child(n+2) { /* 2번째 항목부터 */
+            /* 일정, 후보, 지도 및 경로 항목 (나머지 3개) - 2행에 3등분하여 배치 */
+            .navbar a:nth-child(n+2) { 
                 flex: 1 1 calc(33.33% - 10px); 
                 max-width: calc(33.33% - 10px);
                 margin: 5px; 
@@ -57,62 +58,22 @@
                 box-sizing: border-box;
             }
         }
-
-        .container { width: 90%; max-width: 800px; margin: 0 auto; padding: 20px 0; }
-        h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
-        h3 { 
-            color: #6DB95A; 
-            text-align: center;
-            font-size: 1.4em;
-            margin: 40px 0 20px 0;
-            position: relative;
-        }
-        h3::before, h3::after {
-            content: '≡';
-            color: #6DB95A;
-            margin: 0 10px;
-        }
-
-        .map-section {
-            background-color: #fff;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .map-section p {
-            margin-bottom: 20px;
-            color: #666;
-        }
-
-        .button-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #6DB95A;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            border: 2px solid #6DB95A;
-        }
-
-        .button-link:hover {
-            background-color: #4A7C59;
-        }
+        /* ---------------------------------------------------------------------------------- */
         
-        /* 하단 링크 스타일: 중앙 정렬 */
-        .back-link { 
-            display: block; 
-            text-align: center; 
-            margin-top: 30px; 
-            font-size: 1.1em; 
-            color: #6DB95A; 
-            text-decoration: none; 
+        .container { width: 95%; max-width: 800px; margin: 0 auto; padding: 20px 0; }
+        h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
+        /* 여기에 maps.html 고유의 스타일이 들어갈 것이오. */
+        .map-placeholder { 
+            height: 400px; 
+            background-color: #ddd; 
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+            font-size: 1.5em;
         }
-        .back-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -124,27 +85,10 @@
     </div>
 
     <div class="container">
-        <h2><i class="fas fa-map-marked-alt"></i> 지도 및 경로</h2>
-
-        <h3><i class="fas fa-file-alt"></i> 구글 시트 일정</h3>
-        <div class="map-section">
-            <p>전체 여행 계획이 기록된 구글 시트 파일로 이동합니다.</p>
-            <a href="https://docs.google.com/spreadsheets/d/1jsxritY92y_f-1u0Ij5FKDbQpSO0kBXpoT_tJ-ZxNGk/edit?usp=sharing" class="button-link" target="_blank">구글 시트 바로가기</a>
+        <h2><i class="fas fa-map"></i> 경로 지도</h2>
+        <div class="map-placeholder">
+            지도 표시 공간
         </div>
-        
-        <h3><i class="fas fa-map"></i> 구글 지도</h3>
-        <div class="map-section">
-            <p>아래 버튼을 클릭하여 구글 지도 경로로 이동합니다.</p>
-            <a href="https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4xb6uaQ2RBXL_nk&usp=sharing구글지도" class="button-link" target="_blank">구글지도 바로가기</a>
-        </div>
-
-        <h3><i class="fas fa-list"></i> 네이버 지도 리스트</h3>
-        <div class="map-section">
-            <p>아래 버튼을 클릭하여 네이버 지도에 저장된 리스트로 이동합니다.</p>
-            <a href="https://naver.me/59UKof2w" class="button-link" target="_blank">네이버 리스트 바로가기</a>
-        </div>
-        
-        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> 메인 페이지로 돌아가기</a>
     </div>
 </body>
 </html>
