@@ -2,15 +2,15 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial_scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>여행 일정 상세</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body { /* ... (이전과 동일) ... */ }
-        .navbar { /* ... (이전과 동일) ... */ }
-        .navbar a { /* ... (이전과 동일) ... */ }
-        .container { /* ... (이전과 동일) ... */ }
-        h2 { /* ... (이전과 동일) ... */ }
+        body { /* ... (스타일 유지) ... */ }
+        .navbar { /* ... (스타일 유지) ... */ }
+        .container { /* ... (스타일 유지) ... */ }
+        h2 { /* ... (스타일 유지) ... */ }
+        h3 { /* ... (스타일 유지) ... */ }
         
         /* PC 기본 스타일 (표 형태 유지) */
         .schedule-table { 
@@ -34,9 +34,6 @@
             background-color: #f8f8f8; 
         }
         
-        /* 하단 링크 스타일 */
-        .back-link { /* ... (이전과 동일) ... */ }
-
         /* 💡 모바일 반응형 CSS: 표를 블록 요소로 변환하여 가로 스크롤 제거 */
         @media screen and (max-width: 600px) {
             .schedule-table, .schedule-table tbody, .schedule-table tr, .schedule-table td {
@@ -53,18 +50,20 @@
             }
             .schedule-table td {
                 text-align: right;
-                padding-left: 50%;
+                padding-left: 50%; /* 라벨 공간 확보 */
                 position: relative;
                 border: none;
+                /* ⚠️ 내용이 길 때 확실하게 줄 바꿈 되도록 허용 */
+                word-wrap: break-word; 
+                white-space: normal;
             }
-            /* 셀 내용 앞에 헤더 역할의 라벨 추가 (가독성 확보) */
+            /* 셀 내용 앞에 헤더 역할의 라벨 추가 */
             .schedule-table td::before {
                 content: attr(data-label);
                 position: absolute;
                 left: 12px;
-                width: 50%;
+                width: 45%; /* 라벨 너비 조정 */
                 padding-right: 10px;
-                white-space: nowrap;
                 text-align: left;
                 font-weight: bold;
                 color: #4A7C59;
@@ -77,11 +76,17 @@
                 text-align: left;
                 padding-left: 12px;
                 color: #333;
+                text-align: center; /* 시간 표시는 가운데로 */
+                padding-left: 12px; 
             }
+             /* 시간 셀의 라벨 제거 */
             .schedule-table tr td:first-child::before {
-                content: '시간'; /* 시간 라벨 명시 */
+                content: '시간'; 
             }
         }
+
+        /* 하단 링크 스타일 */
+        .back-link { /* ... (스타일 유지) ... */ }
     </style>
 </head>
 <body>
