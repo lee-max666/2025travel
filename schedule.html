@@ -6,35 +6,19 @@
     <title>여행 일정 상세</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body { /* ... (스타일 유지) ... */ }
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
         .navbar { /* ... (스타일 유지) ... */ }
-        .container { /* ... (스타일 유지) ... */ }
-        h2 { /* ... (스타일 유지) ... */ }
-        h3 { /* ... (스타일 유지) ... */ }
-        
-        /* PC 기본 스타일 (표 형태 유지) */
-        .schedule-table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            background-color: #fff;
-            margin-bottom: 30px; 
-        }
-        .schedule-table th, .schedule-table td { 
-            padding: 12px; 
-            border: 1px solid #ddd; 
-            text-align: center; 
-        }
-        .schedule-table th { 
-            background-color: #4A7C59; 
-            color: white; 
-            font-weight: bold; 
-        }
-        .schedule-table tr:nth-child(even) { 
-            background-color: #f8f8f8; 
-        }
-        
-        /* 💡 모바일 반응형 CSS: 표를 블록 요소로 변환하여 가로 스크롤 제거 */
+        .container { width: 90%; max-width: 1000px; margin: 0 auto; padding: 20px 0; }
+        h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
+        h3 { color: #6DB95A; border-left: 5px solid #6DB95A; padding-left: 10px; margin-top: 40px; margin-bottom: 15px; }
+
+        /* PC 기본 스타일 */
+        .schedule-table { width: 100%; border-collapse: collapse; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #fff; margin-bottom: 30px; }
+        .schedule-table th, .schedule-table td { padding: 12px; border: 1px solid #ddd; text-align: center; }
+        .schedule-table th { background-color: #4A7C59; color: white; font-weight: bold; }
+        .schedule-table tr:nth-child(even) { background-color: #f8f8f8; }
+
+        /* 💡 모바일 반응형 CSS: 세로 스크롤 전용 블록 디자인 (가로 스크롤 방지) */
         @media screen and (max-width: 600px) {
             .schedule-table, .schedule-table tbody, .schedule-table tr, .schedule-table td {
                 display: block;
@@ -53,38 +37,42 @@
                 padding-left: 50%; /* 라벨 공간 확보 */
                 position: relative;
                 border: none;
-                /* ⚠️ 내용이 길 때 확실하게 줄 바꿈 되도록 허용 */
+                /* 내용이 길 때 줄 바꿈 및 흰 공백 유지 설정 */
                 word-wrap: break-word; 
                 white-space: normal;
+                border-bottom: 1px solid #eee; /* 가독성을 위해 셀 간 구분선 추가 */
             }
+            .schedule-table tr td:last-child {
+                border-bottom: none; /* 마지막 셀 구분선 제거 */
+            }
+            
             /* 셀 내용 앞에 헤더 역할의 라벨 추가 */
             .schedule-table td::before {
                 content: attr(data-label);
                 position: absolute;
                 left: 12px;
-                width: 45%; /* 라벨 너비 조정 */
+                width: 45%; 
                 padding-right: 10px;
                 text-align: left;
                 font-weight: bold;
                 color: #4A7C59;
             }
+            
             /* 첫 번째 td (시간)는 타이틀로 강조 */
             .schedule-table tr td:first-child {
                 background-color: #e0f0e0;
                 font-size: 1.1em;
                 font-weight: bold;
-                text-align: left;
+                text-align: center; /* 시간은 중앙 정렬 */
                 padding-left: 12px;
                 color: #333;
-                text-align: center; /* 시간 표시는 가운데로 */
-                padding-left: 12px; 
+                padding-right: 12px; /* 오른쪽 패딩 추가 */
+                border-bottom: 1px solid #ddd;
             }
-             /* 시간 셀의 라벨 제거 */
             .schedule-table tr td:first-child::before {
-                content: '시간'; 
+                content: ''; /* 시간 셀에서는 라벨 숨김 (이미 시간이 큼) */
             }
         }
-
         /* 하단 링크 스타일 */
         .back-link { /* ... (스타일 유지) ... */ }
     </style>
