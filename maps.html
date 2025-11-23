@@ -33,7 +33,7 @@
         .navbar i { margin-right: 5px; }
 
         /* ---------------------------------------------------------------------------------- */
-        /* ✨ 모바일 네비게이션 배치 (메인 1행, 나머지 3개 2행) - 모든 파일에 동일 적용 */
+        /* ✨ 모바일 네비게이션 배치 (메인 1행, 나머지 3개 2행) */
         @media (max-width: 768px) {
             .navbar {
                 display: flex;
@@ -42,8 +42,8 @@
             }
             /* 메인 항목 (첫 번째 항목) - 1행 전체를 차지하도록 강제 설정 */
             .navbar a:first-child { 
-                width: 100%; /* 너비를 100%로 설정하여 확실히 줄바꿈 */
-                flex: 0 0 auto; /* 유연성 제거 */
+                width: 100%; 
+                flex: 0 0 auto; 
                 margin: 0 auto 5px auto; 
                 padding: 10px 20px;
                 box-sizing: border-box;
@@ -62,18 +62,29 @@
         
         .container { width: 95%; max-width: 800px; margin: 0 auto; padding: 20px 0; }
         h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
-        /* 여기에 maps.html 고유의 스타일이 들어갈 것이오. */
-        .map-placeholder { 
-            height: 400px; 
+        
+        /* 지도 컨테이너 스타일 */
+        .map-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 비율 유지 (높이/너비) */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
             background-color: #ddd; 
             border: 1px solid #ccc; 
             border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #666;
-            font-size: 1.5em;
         }
+
+        /* 아이프레임 스타일 */
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
     </style>
 </head>
 <body>
@@ -86,9 +97,11 @@
 
     <div class="container">
         <h2><i class="fas fa-map"></i> 경로 지도</h2>
-        <div class="map-placeholder">
-            지도 표시 공간
+        
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15252.123!2d127.38456!3d36.35041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35654c330f555555%3A0x6b8c8d8c8d8c8d8c!2z64aF6rCc64yA!5e0!3m2!1sko!2skr!4v1678822222222" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
+        
     </div>
 </body>
 </html>
