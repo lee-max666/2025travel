@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>식사, 카페 및 관광지 후보 목록</title>
+    <title>여행 후보 장소</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
@@ -32,23 +32,24 @@
         .navbar a.active { background-color: #6DB95A; font-weight: bold; }
         .navbar i { margin-right: 5px; }
 
-        /* ✨ 모바일 네비게이션 배치 (1개/3개 분할) */
+        /* ---------------------------------------------------------------------------------- */
+        /* ✨ 모바일 네비게이션 배치 (메인 1행, 나머지 3개 2행) - 모든 파일에 동일 적용 */
         @media (max-width: 768px) {
             .navbar {
                 display: flex;
                 flex-wrap: wrap; 
                 padding: 5px 0;
             }
-            /* 첫 번째 항목 (메인)은 100% 너비를 차지하여 단독으로 한 줄에 배치 */
+            /* 메인 항목 (첫 번째 항목) - 1행 전체를 차지하도록 강제 설정 */
             .navbar a:first-child { 
-                flex: 0 0 100%;
-                max-width: fit-content; /* 너비를 내용에 맞게 축소 */
-                margin: 0 auto 5px auto; /* 중앙 정렬 및 아래쪽 여백 */
+                width: 100%; /* 너비를 100%로 설정하여 확실히 줄바꿈 */
+                flex: 0 0 auto; /* 유연성 제거 */
+                margin: 0 auto 5px auto; 
                 padding: 10px 20px;
                 box-sizing: border-box;
             }
-            /* 나머지 3개 항목은 다음 줄에서 1/3씩 균등하게 배치 */
-            .navbar a:nth-child(n+2) { /* 2번째 항목부터 */
+            /* 일정, 후보, 지도 및 경로 항목 (나머지 3개) - 2행에 3등분하여 배치 */
+            .navbar a:nth-child(n+2) { 
                 flex: 1 1 calc(33.33% - 10px); 
                 max-width: calc(33.33% - 10px);
                 margin: 5px; 
@@ -57,85 +58,13 @@
                 box-sizing: border-box;
             }
         }
-
+        /* ---------------------------------------------------------------------------------- */
+        
         .container { width: 95%; max-width: 800px; margin: 0 auto; padding: 20px 0; }
         h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
-        
-        /* Section Heading */
-        .section-heading { 
-            color: #4A7C59; 
-            font-size: 1.4em; 
-            border-left: 5px solid #6DB95A; 
-            padding-left: 10px; 
-            margin: 40px 0 20px 0; 
-            font-weight: bold;
-        }
-
-        /* Option Item */
-        .option-item {
-            background-color: #fff;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            overflow: hidden; /* Clearfix for floating elements */
-        }
-        .option-item h3 { 
-            color: #6DB95A; 
-            font-size: 1.2em; 
-            border-bottom: 2px solid #6DB95A; 
-            padding-bottom: 5px; 
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        /* Detail List */
-        .detail-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .detail-list li {
-            padding: 5px 0;
-            border-bottom: 1px dashed #eee;
-            display: flex; /* Flexbox for alignment */
-        }
-        .detail-list li:last-child { border-bottom: none; }
-        
-        /* Labels and Values */
-        .detail-list span:first-child {
-            font-weight: bold;
-            color: #4A7C59;
-            width: 80px; /* Label width */
-            flex-shrink: 0;
-        }
-        .detail-list span:last-child {
-            flex-grow: 1;
-            text-align: left;
-        }
-
-        /* Mobile Optimization */
-        @media (max-width: 480px) {
-            .detail-list li {
-                display: block;
-            }
-            .detail-list span:first-child {
-                width: auto;
-                display: block;
-                margin-bottom: 2px;
-            }
-        }
-
-        /* Back Link Style */
-        .back-link { 
-            display: block; 
-            text-align: center; 
-            margin-top: 30px; 
-            font-size: 1.1em; 
-            color: #6DB95A; 
-            text-decoration: none; 
-        }
-        .back-link:hover { text-decoration: underline; }
+        /* 여기에 options.html 고유의 스타일이 들어갈 것이오. */
+        .option-list { list-style: none; padding: 0; }
+        .option-list li { background-color: #fff; padding: 15px; margin-bottom: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
@@ -147,112 +76,12 @@
     </div>
 
     <div class="container">
-        <h2><i class="fas fa-utensils"></i> 식사, 카페 및 관광지 후보 목록</h2>
-
-        <div class="section-heading"><i class="fas fa-utensils"></i> 식사 옵션</div>
-        
-        <div class="option-item">
-            <h3>국밥</h3>
-            <ul class="detail-list">
-                <li><span>상호명</span><span>선화동 소머리 해장국</span></li>
-                <li><span>가격</span><span>₩10,000</span></li>
-                <li><span>비고</span><span>정기휴무 월</span></li>
-                <li><span>오픈 시간</span><span>오전 7:00</span></li>
-            </ul>
-        </div>
-        
-        <div class="option-item">
-            <h3>두부</h3>
-            <ul class="detail-list">
-                <li><span>상호명</span><span>광천식당</span></li>
-                <li><span>가격</span><span>₩16,000</span></li>
-                <li><span>비고</span><span></span></li>
-                <li><span>오픈 시간</span><span>오전 10:30</span></li>
-            </ul>
-        </div>
-
-        <div class="option-item">
-            <h3>자유식</h3>
-            <ul class="detail-list">
-                <li><span>상호명</span><span>대전 신세계</span></li>
-                <li><span>가격</span><span></span></li>
-                <li><span>비고</span><span>내부에서 식사</span></li>
-                <li><span>오픈 시간</span><span>오전 11:00</span></li>
-            </ul>
-        </div>
-
-        <div class="section-heading"><i class="fas fa-coffee"></i> 카페/디저트 옵션</div>
-        
-        <div class="option-item">
-            <h3>스타벅스 대전엑스포스카이점</h3>
-            <ul class="detail-list">
-                <li><span>가격</span><span>₩6,900</span></li>
-                <li><span>비고</span><span>38층</span></li>
-                <li><span>오픈 시간</span><span>오전 8:00</span></li>
-            </ul>
-        </div>
-
-        <div class="option-item">
-            <h3>성심당 문화원</h3>
-            <ul class="detail-list">
-                <li><span>가격</span><span>₩6,000</span></li>
-                <li><span>비고</span><span></span></li>
-                <li><span>오픈 시간</span><span>오전 8:00</span></li>
-            </ul>
-        </div>
-
-        <div class="option-item">
-            <h3>젤리포에</h3>
-            <ul class="detail-list">
-                <li><span>가격</span><span>₩6,400</span></li>
-                <li><span>비고</span><span></span></li>
-                <li><span>오픈 시간</span><span>오전 11:00</span></li>
-            </ul>
-        </div>
-
-        <div class="section-heading"><i class="fas fa-camera-retro"></i> 관광 옵션</div>
-
-        <div class="option-item">
-            <h3>한밭 수목원</h3>
-            <ul class="detail-list">
-                <li><span>분류</span><span>수목원</span></li>
-                <li><span>가격</span><span></span></li>
-                <li><span>비고</span><span>화요일 서원 휴무</span></li>
-                <li><span>오픈 시간</span><span>오전 5:00</span></li>
-            </ul>
-        </div>
-        
-        <div class="option-item">
-            <h3>대전근현대사전시관</h3>
-            <ul class="detail-list">
-                <li><span>분류</span><span>전시관</span></li>
-                <li><span>가격</span><span></span></li>
-                <li><span>비고</span><span>정기휴무 월</span></li>
-                <li><span>오픈 시간</span><span>오전 10:00</span></li>
-            </ul>
-        </div>
-        
-        <div class="option-item">
-            <h3>엑스포 과학공원</h3>
-            <ul class="detail-list">
-                <li><span>분류</span><span>엑스포</span></li>
-                <li><span>가격</span><span>변동</span></li>
-                <li><span>비고</span><span></span></li>
-                <li><span>오픈 시간</span><span></span></li>
-            </ul>
-        </div>
-
-        <div class="option-item">
-            <h3>마중</h3>
-            <ul class="detail-list">
-                <li><span>분류</span><span>소품샵</span></li>
-                <li><span>가격</span><span></span></li>
-                <li><span>비고</span><span></span></li>
-                <li><span>오픈 시간</span><span>오전 11:30</span></li>
-            </ul>
-        </div>
-
-        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> 메인 페이지로 돌아가기</a>
+        <h2><i class="fas fa-clipboard-list"></i> 후보 장소 목록</h2>
+        <ul class="option-list">
+            <li>성심당 (본점)</li>
+            <li>한밭 수목원</li>
+            <li>대전 신세계 Art & Science</li>
+        </ul>
     </div>
 </body>
 </html>
