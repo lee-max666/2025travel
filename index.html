@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>2025 대전 여행</title>
+    <title>2025 대전 여행 정보</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* CSS 초기화 */
@@ -21,39 +21,39 @@
             color: #333;
         }
 
-        /* 💡 수정: 네비게이션 바 스타일 */
+        /* 네비게이션 바 스타일 */
         .navbar {
             background-color: #4A7C59;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            display: flex; /* Flexbox 사용하여 아이템 정렬 */
-            justify-content: space-around; /* 아이템들을 균등하게 분배 */
-            padding: 8px 0; /* 상하 패딩 조정 */
-            width: 100%; /* 너비 100% */
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            width: 100%;
         }
         .navbar a { 
-            display: flex; /* Flexbox 사용하여 아이콘과 텍스트 정렬 */
-            flex-direction: column; /* 아이콘 위, 텍스트 아래 */
-            align-items: center; /* 가운데 정렬 */
-            justify-content: center; /* 세로도 가운데 정렬 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             color: white; 
             text-decoration: none; 
-            font-size: 14px; /* 💡 텍스트 크기 조정 */
+            font-size: 14px; /* 텍스트 크기 조정 */
             transition: background-color 0.3s;
-            flex-grow: 1; /* 공간을 균등하게 차지 */
-            padding: 0 5px; /* 좌우 패딩 유지 */
-            min-width: 65px; /* 💡 최소 너비 조정 (4개 아이템 충분히 보이도록) */
-            white-space: nowrap; /* 텍스트 줄바꿈 방지 */
-            overflow: hidden; /* 넘치는 텍스트 숨김 */
-            text-overflow: ellipsis; /* ...으로 표시 */
+            flex-grow: 1;
+            padding: 0 5px;
+            min-width: 65px; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
         }
         .navbar a:hover { background-color: #6DB95A; }
         .navbar a.active { background-color: #6DB95A; font-weight: bold; }
         .navbar i { 
-            margin-bottom: 3px; /* 아이콘과 텍스트 사이 간격 */
-            font-size: 20px; /* 💡 아이콘 크기 조정 */
+            margin-bottom: 3px;
+            font-size: 20px;
         }
         
         .container {
@@ -67,22 +67,22 @@
         h1 {
             color: #4A7C59;
             text-align: center;
-            margin-bottom: 30px; /* 💡 제목 아래 여백 조정 */
+            margin-bottom: 30px;
             font-size: 2em;
-            padding-top: 15px; /* 네비게이션바 아래 제목이 붙지 않도록 */
+            padding-top: 15px;
         }
         h1 i {
             margin-right: 10px;
             color: #6DB95A;
         }
 
-        /* 💡 수정: 메인 이미지 스타일 */
+        /* 메인 이미지 스타일 */
         .main-image {
             width: 100%;
             max-width: 600px; 
             height: auto; 
-            margin-top: 20px; /* 💡 이미지 위 여백 추가 */
-            margin-bottom: 50px; /* 💡 이미지 아래 여백을 더 늘림 */
+            margin-top: 20px; 
+            margin-bottom: 50px; /* 이미지가 충분히 아래로 내려오도록 여백 조정 */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             display: block; 
@@ -92,7 +92,7 @@
 
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* 💡 최소 너비 조정 */
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
             justify-content: center; 
             margin-bottom: 40px;
@@ -128,28 +128,16 @@
             padding-bottom: 0;
         }
 
-        /* 하단 링크 스타일 */
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 30px;
-            font-size: 1.1em;
-            color: #6DB95A;
-            text-decoration: none;
-        }
-        .back-link:hover { text-decoration: underline; }
-
         /* 미디어 쿼리: 아주 좁은 화면에서 네비게이션 아이템 글자 크기 조정 */
         @media (max-width: 350px) { 
             .navbar a {
-                font-size: 12px; /* 텍스트 더 작게 */
-                min-width: 55px; /* 최소 너비 유지 */
+                font-size: 12px;
+                min-width: 55px;
             }
             .navbar i {
-                font-size: 18px; /* 아이콘 더 작게 */
+                font-size: 18px;
             }
         }
-
     </style>
 </head>
 <body>
@@ -180,7 +168,6 @@
             </a>
         </div>
         
-        <a href="#" onclick="history.back(); return false;" class="back-link"><i class="fas fa-arrow-left"></i> 개인 페이지 메인으로 돌아가기</a>
-    </div>
+        </div>
 </body>
 </html>
