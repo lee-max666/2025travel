@@ -2,13 +2,9 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 대전여행 메인 페이지</title>
-    
-    <meta property="og:title" content="2025 대전여행 메인 페이지">
-    <meta property="og:description" content="여행 일정, 식사/관광 후보, 지도 및 경로를 한 눈에 확인하세요.">
-    <meta property="og:image" content="https://github.com/lee-max666/mars.github.io/blob/main/GGOM(PC).jpg?raw=true">
-    <meta property="og:url" content="https://lee-max666.github.io/2025travel/index.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>2025 대전 여행</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -19,8 +15,8 @@
             background-color: #f4f7f6;
             color: #333;
         }
-        
-        /* 고정 네비게이션 스타일 */
+
+        /* 💡 수정: 네비게이션 바 스타일 */
         .navbar {
             background-color: #4A7C59;
             overflow: hidden;
@@ -29,99 +25,134 @@
             z-index: 100;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             text-align: center;
+            display: flex; /* Flexbox 사용하여 아이템 정렬 */
+            justify-content: space-around; /* 아이템들을 균등하게 분배 */
+            padding: 5px 0; /* 상하 패딩 추가 */
         }
-        .navbar a { display: inline-block; color: white; text-align: center; padding: 14px 20px; text-decoration: none; font-size: 17px; transition: background-color 0.3s; }
+        .navbar a { 
+            display: flex; /* Flexbox 사용하여 아이콘과 텍스트 정렬 */
+            flex-direction: column; /* 아이콘 위, 텍스트 아래 */
+            align-items: center; /* 가운데 정렬 */
+            color: white; 
+            text-align: center; 
+            padding: 5px 5px; /* 패딩을 줄여 공간 확보 */
+            text-decoration: none; 
+            font-size: 13px; /* 텍스트 크기 줄임 */
+            transition: background-color 0.3s;
+            flex-grow: 1; /* 공간을 균등하게 차지 */
+            min-width: 60px; /* 최소 너비 확보 */
+        }
         .navbar a:hover { background-color: #6DB95A; }
         .navbar a.active { background-color: #6DB95A; font-weight: bold; }
-        .navbar i { margin-right: 5px; }
-
-        .container { 
-            width: 90%; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 20px 0; 
+        .navbar i { 
+            margin-bottom: 3px; /* 아이콘과 텍스트 사이 간격 */
+            font-size: 18px; /* 💡 아이콘 크기 줄임 */
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
             text-align: center;
         }
-        
-        /* 메인 제목 스타일 */
-        h2 { 
-            color: #4A7C59; 
-            text-align: center; 
-            font-size: 1.8em;
-            padding-bottom: 10px; 
-            margin-bottom: 30px; 
-            border-bottom: 3px solid #6DB95A;
+
+        h1 {
+            color: #4A7C59;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        h1 i {
+            margin-right: 10px;
+            color: #6DB95A;
         }
 
-        /* 반응형 이미지 영역 스타일 */
-        .responsive-main-image {
-            background-image: url('https://github.com/lee-max666/mars.github.io/blob/main/GGOM(MO).jpg?raw=true');
+        /* 💡 수정: 메인 이미지 스타일 */
+        .main-image {
             width: 100%;
-            height: 200px;
-            max-width: 800px; 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            margin: 0 auto 40px auto; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px; /* 최대 너비 설정 */
+            height: auto; /* 비율 유지 */
+            margin-bottom: 40px; /* 💡 이미지 아래 여백 늘림 */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: block; /* 중앙 정렬을 위해 블록 요소로 */
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* PC 또는 넓은 화면일 경우 이미지를 PC용으로 전환하는 미디어 쿼리 */
-        @media (min-width: 768px) {
-            .responsive-main-image {
-                background-image: url('https://github.com/lee-max666/mars.github.io/blob/main/GGOM(PC).jpg?raw=true');
-                height: 350px;
-            }
-        }
-        
-        /* 카드 그리드 스타일 */
         .card-grid {
-            display: flex;
-            flex-wrap: wrap; 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            justify-content: center;
+            justify-content: center; /* 카드들을 중앙 정렬 */
             margin-bottom: 40px;
         }
 
-        .card-link {
-            text-decoration: none;
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.2s;
             color: #333;
-            flex-grow: 1;
-            min-width: 150px; 
-            max-width: 200px; 
-        }
-
-        .info-card {
-            background-color: white;
-            padding: 25px;
-            border-radius: 15px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            height: 100%;
+            text-decoration: none;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            cursor: pointer;
+            align-items: center;
         }
-
-        .info-card:hover {
+        .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
-
-        .info-card i {
+        .card i {
             font-size: 3em;
             color: #6DB95A;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .card h2 {
+            font-size: 1.2em;
+            color: #4A7C59;
+            margin: 0;
+            border-bottom: none; /* 카드 내 h2는 하단 선 제거 */
+            padding-bottom: 0;
         }
 
-        .info-card span {
+        /* 하단 링크 스타일 */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
             font-size: 1.1em;
-            font-weight: bold;
+            color: #6DB95A;
+            text-decoration: none;
         }
-        
+        .back-link:hover { text-decoration: underline; }
+
+        /* 💡 미디어 쿼리: 좁은 화면에서 네비게이션 아이템 개수 조절 */
+        @media (max-width: 450px) {
+            .navbar a {
+                padding: 5px 2px; /* 더 좁은 패딩 */
+                font-size: 11px; /* 텍스트 더 작게 */
+                min-width: 50px;
+            }
+            .navbar i {
+                font-size: 16px; /* 아이콘 더 작게 */
+            }
+        }
+        @media (max-width: 350px) { /* 350px 이하에서는 아이콘 4개를 2줄로 */
+            .navbar {
+                flex-wrap: wrap; /* 줄바꿈 허용 */
+                justify-content: space-evenly; /* 더 고르게 분배 */
+            }
+            .navbar a {
+                flex: 1 1 45%; /* 한 줄에 2개씩 */
+                max-width: 45%;
+                margin: 5px 0;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -133,30 +164,26 @@
     </div>
 
     <div class="container">
-        <h2><i class="fas fa-map-marker-alt"></i> 2025 대전여행</h2>
+        <h1><i class="fas fa-map-marker-alt"></i> 2025 대전여행</h1>
+        
+        <img src="your_main_image.jpg" alt="2025 대전여행 메인 이미지" class="main-image"> 
 
-        <div class="responsive-main-image"></div>
         <div class="card-grid">
-            <a href="schedule.html" class="card-link">
-                <div class="info-card">
-                    <i class="far fa-calendar-alt"></i>
-                    <span>여행 일정</span>
-                </div>
+            <a href="schedule.html" class="card">
+                <i class="fas fa-calendar-alt"></i>
+                <h2>여행 일정</h2>
             </a>
-            <a href="options.html" class="card-link">
-                <div class="info-card">
-                    <i class="fas fa-utensils"></i>
-                    <span>식사/관광 후보</span>
-                </div>
+            <a href="options.html" class="card">
+                <i class="fas fa-utensils"></i>
+                <h2>식사/관광 후보</h2>
             </a>
-            <a href="maps.html" class="card-link">
-                <div class="info-card">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <span>지도 및 경로</span>
-                </div>
+            <a href="maps.html" class="card">
+                <i class="fas fa-map-marked-alt"></i>
+                <h2>지도 및 경로</h2>
             </a>
         </div>
         
+        <a href="#" onclick="history.back(); return false;" class="back-link"><i class="fas fa-arrow-left"></i> 개인 페이지 메인으로 돌아가기</a>
     </div>
 </body>
 </html>
