@@ -1,174 +1,115 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>지도 및 경로</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
-        
-        /* 고정 네비게이션 스타일 (PC: 1줄) */
-        .navbar {
-            background-color: #4A7C59;
-            overflow: hidden;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-        .navbar a { 
-            display: inline-block; 
-            color: white; 
-            text-align: center; 
-            padding: 14px 15px;
-            text-decoration: none; 
-            font-size: 17px; 
-            transition: background-color 0.3s;
-            white-space: nowrap; 
-        }
-        .navbar a:hover { background-color: #6DB95A; }
-        .navbar a.active { background-color: #6DB95A; font-weight: bold; }
-        .navbar i { margin-right: 5px; }
-
-        /* ---------------------------------------------------------------------------------- */
-        /* 모바일 네비게이션 배치 (1행: 메인, 2행: 일정/후보/지도) */
-        @media (max-width: 768px) {
-            .navbar {
-                display: flex;
-                flex-wrap: wrap; 
-                padding: 5px 0;
-            }
-            /* 첫 번째 항목 (메인)은 100% 너비로 1행 차지 */
-            .navbar a:first-child { 
-                width: 100%; 
-                flex: 0 0 auto; 
-                margin: 0 auto 5px auto; 
-                padding: 10px 20px;
-                box-sizing: border-box;
-                font-size: 15px; 
-            }
-            /* 나머지 3개 항목 (일정, 후보, 지도)는 3등분하여 2행 차지 */
-            .navbar a:nth-child(n+2) { 
-                flex: 1 1 calc(33.33% - 10px); 
-                max-width: calc(33.33% - 10px);
-                margin: 5px; 
-                padding: 10px 0;
-                font-size: 15px; 
-                box-sizing: border-box;
-            }
-        }
-        /* ---------------------------------------------------------------------------------- */
-        
-        .container { width: 95%; max-width: 800px; margin: 0 auto; padding: 20px 0; }
-        /* 메인 제목 (h2)만 남기고, 아래 링크 그룹 제목(h3)은 삭제됨 */
-        h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
-        
-        /* Linktree 스타일링 */
-        .link-group { 
-            margin-top: 20px; 
-            text-align: center; 
-        }
-
-        /* 이 h3 스타일은 이제 사용되지 않음 */
-        /*
-        .link-group h3 { 
-            color: #4A7C59; 
-            margin-bottom: 25px;
-            font-size: 1.5em;
-        }
-        */
-
-        .link-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .link-item {
-            display: block;
-            background-color: #fff;
-            color: #333;
-            text-decoration: none;
-            padding: 15px 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
-            font-weight: bold;
-            font-size: 1.1em;
-            border: 2px solid #6DB95A;
-        }
-        
-        .link-item:hover {
-            background-color: #e6f3e6;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        }
-        
-        .link-item i {
-            margin-right: 10px;
-            color: #4A7C59;
-        }
-        
-        /* 모바일 최적화 */
-        @media (max-width: 600px) {
-            .link-item {
-                padding: 12px 15px;
-                font-size: 1em;
-            }
-        }
-        /* ✨ 새로 추가된 Linktree 메인 페이지 이동 버튼 스타일 */
-        .main-page-link-btn {
-            display: block;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지도 및 경로</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
+        
+        /* 고정 네비게이션 스타일 */
+        .navbar {
+            background-color: #4A7C59;
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             text-align: center;
-            margin-top: 50px;
+        }
+        .navbar a { display: inline-block; color: white; text-align: center; padding: 14px 20px; text-decoration: none; font-size: 17px; transition: background-color 0.3s; }
+        .navbar a:hover { background-color: #6DB95A; }
+        .navbar a.active { background-color: #6DB95A; font-weight: bold; }
+        .navbar i { margin-right: 5px; }
+
+        .container { width: 90%; max-width: 800px; margin: 0 auto; padding: 20px 0; }
+        h2 { color: #4A7C59; text-align: center; border-bottom: 3px solid #6DB95A; padding-bottom: 10px; margin-bottom: 30px; }
+        h3 { 
+            color: #6DB95A; 
+            text-align: center;
+            font-size: 1.4em;
+            margin: 40px 0 20px 0;
+            position: relative;
+        }
+        h3::before, h3::after {
+            content: '≡';
+            color: #6DB95A;
+            margin: 0 10px;
+        }
+
+        .map-section {
+            background-color: #fff;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .map-section p {
             margin-bottom: 20px;
-            padding: 15px 20px;
+            color: #666;
+        }
+
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
             background-color: #6DB95A;
             color: white;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: 5px;
             font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.2s;
+            transition: background-color 0.3s;
+            border: 2px solid #6DB95A;
         }
-        .main-page-link-btn:hover {
+
+        .button-link:hover {
             background-color: #4A7C59;
         }
-    </style>
+        
+        /* 하단 링크 스타일: 중앙 정렬 */
+        .back-link { 
+            display: block; 
+            text-align: center; 
+            margin-top: 30px; 
+            font-size: 1.1em; 
+            color: #6DB95A; 
+            text-decoration: none; 
+        }
+        .back-link:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="index.html"><i class="fas fa-home"></i> 메인</a> 
-        <a href="schedule.html"><i class="fas fa-calendar-alt"></i> 일정</a> 
-        <a href="options.html"><i class="fas fa-utensils"></i> 후보</a> 
-        <a href="maps.html" class="active"><i class="fas fa-map-marked-alt"></i> 지도 및 경로</a>
-    </div>
+    <div class="navbar">
+        <a href="index.html"><i class="fas fa-home"></i> 메인</a>
+        <a href="schedule.html"><i class="fas fa-calendar-alt"></i> 일정</a>
+        <a href="options.html"><i class="fas fa-utensils"></i> 후보</a>
+        <a href="maps.html" class="active"><i class="fas fa-map-marked-alt"></i> 지도 및 경로</a>
+    </div>
 
-    <div class="container">
-        <h2><i class="fas fa-route"></i> 지도 및 경로</h2>
-        
-        <div class="link-group">
-            <div class="link-list">
-                
-                <a href="https://docs.google.com/spreadsheets/d/1jsxritY92y_f-1u0Ij5FKDbQpSO0kBXpoT_tJ-ZxNGk/edit?usp=sharing" target="_blank" class="link-item">
-                    <i class="fas fa-file-excel"></i> 구글 시트 일정
-                </a>
-                
-                <a href="https://www.google.com/maps/d/u/0/edit?mid=1vFXD-sBXaL5hH9vd4xb6uaQ2RBXL_nk&usp=sharing" target="_blank" class="link-item">
-                    <i class="fas fa-map-pin"></i> 구글 지도
-                </a>
-                
-                <a href="https://naver.me/59UKof2w" target="_blank" class="link-item">
-                    <i class="fas fa-list-alt"></i> 네이버 리스트
-                </a>
-                
-            </div>
-        </div>
-    </div>
-    <a href="../index.html" class="main-page-link-btn">
-        <i class="fas fa-arrow-left"></i> 개인 페이지 메인으로 돌아가기
-    </a>
+    <div class="container">
+        <h2><i class="fas fa-map-marked-alt"></i> 지도 및 경로</h2>
+
+        <h3><i class="fas fa-file-alt"></i> 구글 시트 일정</h3>
+        <div class="map-section">
+            <p>전체 여행 계획이 기록된 구글 시트 파일로 이동합니다.</p>
+            <a href="#" class="button-link">구글 시트 바로가기</a>
+        </div>
+
+        <h3><i class="fas fa-list"></i> 네이버 지도 리스트</h3>
+        <div class="map-section">
+            <p>아래 버튼을 클릭하여 네이버 지도에 저장된 리스트로 이동합니다.</p>
+            <a href="#" class="button-link">네이버 리스트 바로가기</a>
+        </div>
+        
+        <h3><i class="fas fa-map"></i> 구글 지도</h3>
+        <div class="map-section">
+            <p>아래 버튼을 클릭하여 구글 지도 경로로 이동합니다.</p>
+            <a href="#" class="button-link">구글 지도 (내 지도) 바로가기</a>
+        </div>
+        
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> 메인 페이지로 돌아가기</a>
+    </div>
 </body>
 </html>
