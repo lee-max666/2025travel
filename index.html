@@ -11,11 +11,11 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f7f6; /* 배경 색상 */
+            background-color: #f4f7f6;
             color: #333;
         }
         
-        /* 고정 네비게이션 스타일 - 다른 페이지와 통일 */
+        /* 고정 네비게이션 스타일 */
         .navbar {
             background-color: #4A7C59;
             overflow: hidden;
@@ -35,7 +35,7 @@
             max-width: 800px; 
             margin: 0 auto; 
             padding: 20px 0; 
-            text-align: center; /* 메인 콘텐츠 중앙 정렬 */
+            text-align: center;
         }
         
         /* 메인 제목 스타일 */
@@ -48,10 +48,10 @@
             border-bottom: 3px solid #6DB95A;
         }
 
-        /* 💡 Linktree/Mac 스타일 카드 섹션 */
+        /* 카드 그리드 스타일 */
         .card-grid {
             display: flex;
-            flex-wrap: wrap; /* 모바일에서 자동으로 다음 줄로 넘어가게 */
+            flex-wrap: wrap; 
             gap: 20px;
             justify-content: center;
             margin-bottom: 40px;
@@ -61,14 +61,14 @@
             text-decoration: none;
             color: #333;
             flex-grow: 1;
-            min-width: 150px; /* 카드가 너무 작아지지 않게 최소 너비 설정 */
-            max-width: 200px; /* PC에서 적절한 크기 유지 */
+            min-width: 150px; 
+            max-width: 200px; 
         }
 
         .info-card {
             background-color: white;
             padding: 25px;
-            border-radius: 15px; /* 둥근 모서리 (Mac/iPhone 스타일) */
+            border-radius: 15px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.2s, box-shadow 0.2s;
             height: 100%;
@@ -95,42 +95,9 @@
             font-weight: bold;
         }
         
-        /* YouTube 섹션 스타일 */
-        .youtube-section {
-            margin-top: 40px;
-            text-align: left;
-        }
-
-        .youtube-section h3 {
-            color: #4A7C59;
-            font-size: 1.5em;
-            border-left: 5px solid #6DB95A;
-            padding-left: 10px;
-            margin-bottom: 20px;
-        }
-
-        .video-wrapper {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3개 또는 모바일 1개 */
-            gap: 20px;
-        }
-
-        .video-item {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .video-item iframe {
-            width: 100%;
-            aspect-ratio: 16 / 9; /* 16:9 비율 유지 */
-            border: none;
-        }
-        
         /* 하단 링크 스타일 */
         .back-link { 
-            display: inline-block; /* 버튼 형태로 만듦 */
+            display: inline-block;
             padding: 12px 25px;
             background-color: #6DB95A;
             color: white; 
@@ -179,21 +146,6 @@
             </a>
         </div>
         
-        <div class="youtube-section">
-            <h3><i class="fas fa-video"></i> 여행 관련 영상</h3>
-            <div class="video-wrapper">
-                <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" allowfullscreen></iframe>
-                </div>
-                <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" allowfullscreen></iframe>
-                </div>
-                <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" allowfullscreen></iframe>
-                </div>
-                </div>
-        </div>
-
         <a href="https://lee-max666.github.io/" class="back-link">
             <i class="fas fa-arrow-left"></i> 개인 페이지 메인으로 돌아가기
         </a>
