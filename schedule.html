@@ -7,11 +7,9 @@
     <title>2025 대전 여행 일정</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* CSS 초기화 및 기본 스타일 */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Arial', sans-serif; line-height: 1.6; background-color: #f4f7f6; color: #333; }
 
-        /* 네비게이션 바 (초록색 테마) */
         .navbar {
             background-color: #4A7C59;
             position: sticky;
@@ -34,39 +32,33 @@
 
         .container { width: 95%; max-width: 1200px; margin: 20px auto; padding-bottom: 50px; }
         
-        /* 제목 스타일: 밑줄 추가 및 중앙 정렬 */
         .page-title {
             color: #4A7C59;
             text-align: center;
-            margin-bottom: 25px;
+            margin: 0 auto 25px auto;
             font-size: 2em;
             padding-bottom: 10px;
-            border-bottom: 3px solid #4A7C59; /* 다른 페이지와 동일한 밑줄 스타일 */
-            display: inline-block;
-            width: 100%;
+            border-bottom: 3px solid #4A7C59; 
+            display: table;
         }
-        .page-title i { margin-right: 10px; color: #6DB95A; }
 
-        /* 테이블 레이아웃: 전체 중앙 정렬 적용 */
         .table-container { width: 100%; overflow-x: auto; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
         table { width: 100%; border-collapse: collapse; min-width: 1000px; }
         th, td { 
             padding: 15px; 
-            text-align: center; /* 전체 중앙 정렬 요청 반영 */
+            text-align: center; 
             border-bottom: 1px solid #ddd; 
         }
-        th { background-color: #4A7C59; color: white; font-weight: bold; white-space: nowrap; }
+        th { background-color: #4A7C59; color: white; font-weight: bold; }
         
-        /* 열별 스타일 */
-        .col-time { font-weight: bold; color: #4A7C59; width: 140px; }
-        .col-content { font-weight: bold; width: 220px; }
-        .col-method { width: 140px; }
-        .col-remarks { text-align: center; color: #555; width: 380px; } /* 비고란도 중앙 정렬 */
-        .col-cost { font-weight: bold; text-align: center; width: 120px; }
+        .col-time { font-weight: bold; color: #4A7C59; width: 150px; }
+        .col-content { font-weight: bold; width: 250px; }
+        .col-method { width: 150px; }
+        .col-remarks { color: #555; width: 350px; }
+        .col-cost { font-weight: bold; width: 100px; }
 
-        .icon-box { margin-right: 8px; color: #6DB95A; }
         .total-row { background-color: #e8f5e9; font-weight: bold; }
-        .highlight-text { color: #d9534f; font-weight: bold; } /* 중요한 도보/버스 정보 강조 */
+        .important { color: #000; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -78,7 +70,7 @@
     </div>
 
     <div class="container">
-        <h1 class="page-title"><i class="fas fa-route"></i> 일정</h1>
+        <h1 class="page-title">일정</h1>
         
         <div class="table-container">
             <table>
@@ -94,97 +86,104 @@
                 <tbody>
                     <tr>
                         <td class="col-time">오전 06:00 ~ 06:15</td>
-                        <td class="col-content"><i class="fas fa-home icon-box"></i>집 → 물금역</td>
-                        <td class="col-method"><i class="fas fa-taxi"></i> 택시</td>
-                        <td class="col-remarks">약 15분 소요 (기차 탑승 준비)</td>
+                        <td class="col-content">집 → 물금역</td>
+                        <td class="col-method">택시</td>
+                        <td class="col-remarks">15분 소요</td>
                         <td class="col-cost">10,000원</td>
                     </tr>
                     <tr>
                         <td class="col-time">오전 06:30 ~ 08:19</td>
-                        <td class="col-content"><i class="fas fa-train icon-box"></i>물금역 → 대전역</td>
-                        <td class="col-method"><i class="fas fa-train"></i> 무궁화/ITX</td>
-                        <td class="col-remarks">기차 이동 (1시간 44분 소요)</td>
+                        <td class="col-content">물금역 → 대전역</td>
+                        <td class="col-method">기차</td>
+                        <td class="col-remarks">1시간 44분 소요</td>
                         <td class="col-cost">28,100원</td>
                     </tr>
                     <tr>
                         <td class="col-time">오전 08:26 ~ 08:31</td>
-                        <td class="col-content"><i class="fas fa-subway icon-box"></i>대전역 → 중앙로역</td>
-                        <td class="col-method"><i class="fas fa-subway"></i> 지하철 1호선</td>
-                        <td class="col-remarks"><span class="highlight-text">4-2번 문 (빠른 하차)</span>, 도보 3분</td>
+                        <td class="col-content">대전역 → 중앙로역</td>
+                        <td class="col-method">지하철 1호선</td>
+                        <td class="col-remarks"><span class="important">4-2번 문 (빠른 하차)</span>, 도보 3분</td>
                         <td class="col-cost">1,550원</td>
                     </tr>
                     <tr>
                         <td class="col-time">트래블라운지 또는<br>대전역 짐 보관시</td>
-                        <td class="col-content"><i class="fas fa-suitcase-rolling icon-box"></i>성심당 → 트래블 라운지</td>
-                        <td class="col-method"><i class="fas fa-walking"></i> 도보</td>
-                        <td class="col-remarks"><span class="highlight-text">도보 9분</span> 이동하여 짐 맡기기</td>
+                        <td class="col-content">성심당 본점 = 트래블 라운지</td>
+                        <td class="col-method">도보</td>
+                        <td class="col-remarks"><span class="important">도보 9분</span></td>
                         <td class="col-cost">-</td>
                     </tr>
                     <tr>
                         <td class="col-time">오전 08:31 ~ 09:20</td>
-                        <td class="col-content"><i class="fas fa-bread-slice icon-box"></i>성심당 본점 방문</td>
-                        <td class="col-method"><i class="fas fa-walking"></i> 도보</td>
-                        <td class="col-remarks">중앙로역 인근 (빵 쇼핑 및 구경)</td>
+                        <td class="col-content">본점 및 샌드위치 정거장 방문</td>
+                        <td class="col-method">도보</td>
+                        <td class="col-remarks">성심당 방문 일정</td>
                         <td class="col-cost">-</td>
                     </tr>
                     <tr>
                         <td class="col-time">오전 09:30 ~ 10:00</td>
-                        <td class="col-content"><i class="fas fa-utensils icon-box"></i>선화동 소머리 해장국</td>
-                        <td class="col-method"><i class="fas fa-walking"></i> 도보</td>
-                        <td class="col-remarks">트래블 라운지에서 <span class="highlight-text">도보 15분</span> 이동</td>
+                        <td class="col-content">트래블 라운지 → 선화동 해장국</td>
+                        <td class="col-method">도보</td>
+                        <td class="col-remarks"><span class="important">도보 15분</span></td>
                         <td class="col-cost">10,000원</td>
                     </tr>
                     <tr>
                         <td class="col-time">오전 10:00 ~ 오후 12:00</td>
-                        <td class="col-content"><i class="fas fa-leaf icon-box"></i>한밭 수목원 산책</td>
-                        <td class="col-method"><i class="fas fa-bus"></i> 108번 버스</td>
-                        <td class="col-remarks">선화동에서 수목원까지 약 45분 소요</td>
+                        <td class="col-content">한밭 수목원 산책</td>
+                        <td class="col-method">108번 버스</td>
+                        <td class="col-remarks">45분 소요</td>
                         <td class="col-cost">1,500원</td>
                     </tr>
                     <tr>
                         <td class="col-time">오후 12:00 ~ 02:30</td>
-                        <td class="col-content"><i class="fas fa-building icon-box"></i>대전 신세계 & 스타벅스</td>
-                        <td class="col-method"><i class="fas fa-bus"></i> 911번 버스</td>
-                        <td class="col-remarks">16분 소요, <span class="highlight-text">엑스포 스카이점</span> 방문</td>
+                        <td class="col-content">대전 신세계 & 스타벅스</td>
+                        <td class="col-method">911번 버스</td>
+                        <td class="col-remarks"><span class="important">엑스포 스카이점, 최소 오후 2시 30분까지는 버스 탑승</span></td>
                         <td class="col-cost">1,500원</td>
                     </tr>
                     <tr>
                         <td class="col-time">대전역 또는<br>트래블 라운지 짐 보관시</td>
-                        <td class="col-content"><i class="fas fa-briefcase icon-box"></i>국립중앙과학관 → 중앙로역</td>
-                        <td class="col-method"><i class="fas fa-bus"></i> 604번 버스</td>
-                        <td class="col-remarks"><span class="highlight-text">중앙로역 7번 출구 하차 후 도보 5분</span></td>
+                        <td class="col-content">국립중앙과학관 → 중앙로역</td>
+                        <td class="col-method">604번 버스</td>
+                        <td class="col-remarks"><span class="important">중앙로역 7번 출구 하차 후 도보 5분</span></td>
                         <td class="col-cost">1,500원</td>
                     </tr>
                     <tr>
                         <td class="col-time">오후 02:30 ~ 03:30</td>
-                        <td class="col-content"><i class="fas fa-undo icon-box"></i>신세계 → 대전역</td>
-                        <td class="col-method"><i class="fas fa-bus"></i> 606/707번</td>
+                        <td class="col-content">신세계 → 대전역</td>
+                        <td class="col-method">606/707번 버스</td>
                         <td class="col-remarks">오후 03:30 대전역 도착 예정</td>
                         <td class="col-cost">1,500원</td>
                     </tr>
                     <tr>
                         <td class="col-time">오후 04:10 ~ 05:24</td>
-                        <td class="col-content"><i class="fas fa-train icon-box"></i>대전역 → 울산(통도사)</td>
-                        <td class="col-method"><i class="fas fa-train"></i> 기차(KTX/SRT)</td>
-                        <td class="col-remarks">1시간 15분 소요 / 오후 05:24 도착 예정</td>
+                        <td class="col-content">대전역 → 울산(통도사)</td>
+                        <td class="col-method">기차</td>
+                        <td class="col-remarks">1시간 15분 소요, 오후 05:24 도착 예정</td>
                         <td class="col-cost">30,100원</td>
                     </tr>
                     <tr>
                         <td class="col-time">오후 05:24 ~ 05:56</td>
-                        <td class="col-content"><i class="fas fa-bus icon-box"></i>울산역 3번출구 이동</td>
-                        <td class="col-method"><i class="fas fa-walking"></i> 도보/버스</td>
-                        <td class="col-remarks"><span class="highlight-text">3번 출구 오른쪽 방향</span>, 3000번 버스 탑승</td>
+                        <td class="col-content">울산역 3번출구 이동</td>
+                        <td class="col-method">도보/버스</td>
+                        <td class="col-remarks"><span class="important">3번 출구 오른쪽 방향</span>, 3000번 버스 탑승</td>
                         <td class="col-cost">-</td>
                     </tr>
                     <tr>
                         <td class="col-time">오후 05:56 ~ 06:41</td>
-                        <td class="col-content"><i class="fas fa-home icon-box"></i>울산역 → 집(현대 청어람)</td>
-                        <td class="col-method"><i class="fas fa-bus"></i> 시내버스</td>
-                        <td class="col-remarks">신도시 현대 청어람 하차 / <span class="highlight-text">06:41 종료</span></td>
+                        <td class="col-content">울산역 → 집</td>
+                        <td class="col-method">3000번 버스</td>
+                        <td class="col-remarks">신도시 현대 청어람 하차</td>
                         <td class="col-cost">3,500원</td>
                     </tr>
+                    <tr>
+                        <td class="col-time">오후 06:41</td>
+                        <td class="col-content">도착 및 일정 종료</td>
+                        <td class="col-method">-</td>
+                        <td class="col-remarks"><span class="important">도착 예정 종료</span></td>
+                        <td class="col-cost">-</td>
+                    </tr>
                     <tr class="total-row">
-                        <td colspan="4">총 합계 예산 (1인 기준)</td>
+                        <td colspan="4">총 합계 예산</td>
                         <td class="col-cost">89,250원</td>
                     </tr>
                 </tbody>
