@@ -21,38 +21,28 @@
             color: #333;
         }
 
-        /* 네비게이션 바 스타일 수정 완료 */
+        /* 맵 기준 네비게이션 바 스타일 적용 */
         .navbar {
             background-color: #4A7C59;
+            overflow: hidden;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
-            width: 100%;
+            text-align: center;
         }
         .navbar a { 
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
+            display: inline-block; 
             color: white; 
+            text-align: center; 
+            padding: 14px 20px; 
             text-decoration: none; 
-            font-size: 15px;
-            transition: background-color 0.3s;
-            padding: 12px 20px;
-            white-space: nowrap; 
+            font-size: 17px; 
+            transition: background-color 0.3s; 
         }
         .navbar a:hover { background-color: #6DB95A; }
         .navbar a.active { background-color: #6DB95A; font-weight: bold; }
-        .navbar i { 
-            margin-right: 8px;
-            margin-bottom: 0;
-            font-size: 16px;
-        }
+        .navbar i { margin-right: 5px; }
         
         .container {
             width: 90%;
@@ -124,18 +114,6 @@
             margin: 0;
             border-bottom: none; 
             padding-bottom: 0;
-        }
-
-        /* 미디어 쿼리: 아주 좁은 화면 대응 */
-        @media (max-width: 350px) { 
-            .navbar a {
-                font-size: 12px;
-                padding: 10px 8px;
-            }
-            .navbar i {
-                font-size: 14px;
-                margin-right: 4px;
-            }
         }
     </style>
 </head>
